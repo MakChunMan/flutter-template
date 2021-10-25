@@ -24,4 +24,14 @@ class HttpService {
       throw "Unable to retrieve posts.";
     }
   }
+
+  Future<void> deletePost(int id) async {
+    Response res = await delete(Uri.parse("$postsURL/$id"));
+
+    if (res.statusCode == 200) {
+      print("DELETED");
+    } else {
+      throw "Unable to delete post.";
+    }
+  }
 }

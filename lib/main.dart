@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'util/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -48,8 +49,16 @@ class MyHomePage extends StatelessWidget {
 
 class NextPage extends StatelessWidget {
   final String title;
+  last String responseStr;
 
   const NextPage({@required this.title});
+
+  @override
+  void initState() {
+    super.initState();
+    this.responseStr = sendHttpRequest("https://www.google.com");
+    debugPrint("http response:"+ this.responseStr);
+  }
 
   @override
   Widget build(BuildContext context) {

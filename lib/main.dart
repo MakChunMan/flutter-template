@@ -48,14 +48,12 @@ class MyHomePage extends StatelessWidget {
 }
 
 class NextPage extends StatefulWidget {
-  const NextPage({Key? key}) : super(key: key);
-
+  //const NextPage({Key? key}) : super(key: key);
   _NextPageState createState() => _NextPageState();
-
 }
 
 class _NextPageState extends State(NextPage){
-  final String title;
+  
   late Future<String> responseStr;
 
   const NextPage({@required this.title});

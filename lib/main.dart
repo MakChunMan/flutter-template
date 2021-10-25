@@ -47,9 +47,16 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class NextPage extends StatelessWidget {
+class NextPage extends StatefulWidget {
+  const NextPage({Key? key}) : super(key: key);
+
+  _NextPageState createState() => _NextPageState();
+
+}
+
+class _NextPageState extends State(NextPage){
   final String title;
-  last String responseStr;
+  late Future<String> responseStr;
 
   const NextPage({@required this.title});
 
@@ -57,7 +64,7 @@ class NextPage extends StatelessWidget {
   void initState() {
     super.initState();
     this.responseStr = sendHttpRequest("https://www.google.com");
-    debugPrint("http response:"+ this.responseStr);
+    debugPrint("http response:" + this.responseStr);
   }
 
   @override

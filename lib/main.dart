@@ -56,8 +56,6 @@ class _NextPageState extends State(NextPage){
   
   late Future<String> responseStr;
 
-  const NextPage({@required this.title});
-
   @override
   void initState() {
     super.initState();

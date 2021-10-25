@@ -1,11 +1,27 @@
 import 'package:http/http.dart' as http;
 
-Future<String> sendHttpRequest(String url) async {
-  final response = await http.get(Uri.parse(url));
+import 'dart:convert';
+import 'package:http/http.dart';
+import 'post_model.dart';
 
-  if (response.statusCode == 200) {
-    return (response.body);
-  } else {
-    throw Exception('Fail to load album');
+class HttpService {
+  final String postsURL = "https://jsonplaceholder.typicode.com/posts";
+
+  Future<List> getPosts() async {
+    Response res = await get(Uri.parse(postsURL));
+
+    if (res.statusCode == 200) {
+      List<dynamic> body = jsonDecode(res.body);
+
+      List<Post> posts = body
+          .map(
+            (dynamic item) => Post.fromJson(item),
+          )
+          .toList();
+
+      return posts;
+    } else {
+      throw "Unable to retrieve posts.";
+    }
   }
 }

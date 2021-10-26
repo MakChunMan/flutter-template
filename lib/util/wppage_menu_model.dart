@@ -21,34 +21,31 @@ class WP_Page_menu {
 }
 
 class Rendered {
-  final String rendered;
-  //final List<Menuitem> menuitems;
+  final String app_id;
+  final List<MenuItem> menuitems;
   Rendered({
-    @required this.rendered,
-    //@required this.menuitems,
+    @required this.app_id,
+    @required this.menuitems,
   });
 
   factory Rendered.fromJson(Map<String, dynamic> json) {
-    return Rendered(
-      rendered: json['rendered'] as String,
-      //menuitems: json['rendered'] as String,
-    );
+    return Rendered(app_id: json['app_id'] == null ? null : json["app_id"], menuitems: json['menuitems'] == null ? null : List<MenuItem>.from(json['menuitems'].map((x) => MenuItem.fromJson(x))));
   }
 }
 
-class Menuitem {
+class MenuItem {
   final String name;
   final String pageid;
   final int displayorder;
 
-  Menuitem({
+  MenuItem({
     @required this.name,
     @required this.pageid,
     @required this.displayorder,
   });
 
-  factory Menuitem.fromJson(Map<String, dynamic> json) {
-    return Menuitem(
+  factory MenuItem.fromJson(Map<String, dynamic> json) {
+    return MenuItem(
       name: json['name'] as String,
       pageid: json['page-id'] as String,
       displayorder: json['display-order'] as int,

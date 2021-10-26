@@ -6,20 +6,24 @@ import 'wppage_menu_model.dart';
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
 
-  Future<String> getWPPage() async {
+  String removeTabFromWPString(String s) {
+    String aStr = s.replaceAll("&#8220;", '"');
+    aStr = aStr.replaceAll("\n<p>", "");
+    aStr = aStr.replaceAll("</p>\n", "");
+    aStr = aStr.replaceAll("&#8221;", '"');
+    aStr = aStr.replaceAll("&#8243;", '"');
+    return aStr;
+  }
+
+  Future<Rendered> getWPPage() async {
     Response res = await get(Uri.parse("https://flutter-backend.imagworkshop.com/wp-json/wp/v2/pages/52?_fields=id,content"));
     if (res.statusCode == 200) {
       Map<String, dynamic> map = jsonDecode(res.body);
 
-      String aStr = map['content']['rendered'].replaceAll("&#8220;", '"');
-      aStr = aStr.replaceAll("\n<p>", "");
-      aStr = aStr.replaceAll("</p>\n", "");
-      aStr = aStr.replaceAll("&#8221;", '"');
-      aStr = aStr.replaceAll("&#8243;", '"');
+      String aStr = removeTabFromWPString(map['content']['rendered']);
       print(aStr);
       Rendered body = Rendered.fromJson(jsonDecode(aStr));
-      print(body);
-      return "test";
+      return body;
     } else {
       throw "Unable to retrieve posts.";
     }

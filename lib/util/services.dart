@@ -12,7 +12,7 @@ class HttpService {
       Map<String, dynamic> map = jsonDecode(res.body);
       //WP_Page_menu body = WP_Page_menu.fromJson(jsonDecode(res.body));
       print(map['content']);
-      return map['content'];
+      return WP_Page_menu.fromJson(map);
     } else {
       throw "Unable to retrieve posts.";
     }

@@ -6,14 +6,14 @@ import 'wppage_menu_model.dart';
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
 
-  Future<String> getWPPage() async {
+  Future<WP_Page_menu> getWPPage() async {
     Response res = await get(Uri.parse("https://flutter-backend.imagworkshop.com/wp-json/wp/v2/pages/52?_fields=id,content"));
     if (res.statusCode == 200) {
       Map<String, dynamic> map = jsonDecode(res.body);
       print(map);
-      //WP_Page_menu body = WP_Page_menu.fromJson(jsonDecode(res.body));
+      WP_Page_menu body = WP_Page_menu.fromJson(jsonDecode(res.body));
       print(map['content']);
-      return "test";
+      return body;
     } else {
       throw "Unable to retrieve posts.";
     }

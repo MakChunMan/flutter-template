@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 
 class WP_Page_menu {
   final int id;
-  final Rendered content;
+//  final Rendered content;
+  final String content;
 
   WP_Page_menu({
     @required this.id,
@@ -12,7 +13,8 @@ class WP_Page_menu {
   factory WP_Page_menu.fromJson(Map<String, dynamic> json) {
     return WP_Page_menu(
       id: json['id'] as int,
-      content: Rendered.fromJson(json['content']),
+      //content: Rendered.fromJson(json['content']),
+      content: json['content'] as String,
     );
   }
 }

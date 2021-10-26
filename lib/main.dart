@@ -4,7 +4,7 @@ import 'package:global_configuration/global_configuration.dart';
 
 void main() async {
   try {
-    await GlobalConfiguration().loadFromAsset("dev");
+    await GlobalConfiguration().loadFromPath("/assets/config/dev.json");
   } catch (e) {
     // something went wrong while fetching the config from the url ... do something
     print("Exception: " + e.toString());

@@ -12,7 +12,10 @@ class HttpService {
       Map<String, dynamic> map = jsonDecode(res.body);
       print(map);
       print(map['content']['rendered']);
-      Rendered body = Rendered.fromJson(map['content']['rendered']);
+
+      String aStr = map['content']['rendered'].replaceAll("&#8220;", '"');
+      aStr.replaceAll("&#8221;", '\"');
+      Rendered body = Rendered.fromJson(jsonDecode(aStr));
       print(body);
       return "test";
     } else {

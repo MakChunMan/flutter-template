@@ -1,3 +1,4 @@
+import 'package:global_configuration/global_configuration.dart';
 import 'package:flutter/material.dart';
 import 'posts.dart';
 import 'testjson.dart';

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'post_model.dart';
 import 'wppage_menu_model.dart';
+import 'app_config.dart';
 
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
@@ -23,7 +24,8 @@ class HttpService {
       String aStr = removeTabFromWPString(map['content']['rendered']);
       print(aStr);
       Rendered body = Rendered.fromJson(jsonDecode(aStr));
-      return body;
+
+      String hostURL = AppConfig.forEnvironment().propertiesMap["apiUrl"];
     } else {
       throw "Unable to retrieve posts.";
     }

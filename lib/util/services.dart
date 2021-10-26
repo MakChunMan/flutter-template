@@ -7,7 +7,7 @@ import 'propertiesUtil.dart';
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
 
-  String removeTabFromWPString(String s) {
+  static String removeTabFromWPString(String s) {
     String aStr = s.replaceAll("&#8220;", '"');
     aStr = aStr.replaceAll("\n<p>", "");
     aStr = aStr.replaceAll("</p>\n", "");

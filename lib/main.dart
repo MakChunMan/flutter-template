@@ -3,7 +3,13 @@ import 'testjson.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main() async {
-  await GlobalConfiguration().loadFromAsset("dev");
+  try {
+    await GlobalConfiguration().loadFromAsset("dev");
+  } catch (e) {
+    // something went wrong while fetching the config from the url ... do something
+    print(e.toString());
+  }
+
   runApp(MyApp());
 }
 

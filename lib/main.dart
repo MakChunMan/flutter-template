@@ -3,8 +3,9 @@ import 'testjson.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main() async {
+  GlobalConfiguration cfg = new GlobalConfiguration();
   try {
-    await GlobalConfiguration().loadFromPath("/assets/config/dev.json");
+    await cfg.loadFromPath("/assets/config/dev.json");
   } catch (e) {
     // something went wrong while fetching the config from the url ... do something
     print("Exception: " + e.toString());

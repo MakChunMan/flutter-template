@@ -10,6 +10,7 @@ class HttpService {
     Response res = await get(Uri.parse("https://flutter-backend.imagworkshop.com/wp-json/wp/v2/pages/52?_fields=id,content"));
     if (res.statusCode == 200) {
       Map<String, dynamic> map = jsonDecode(res.body);
+      print(map);
       print(map['content']['rendered']);
       Rendered body = Rendered.fromJson(map['content']['rendered']);
       print(body);

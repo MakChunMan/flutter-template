@@ -13,7 +13,7 @@ class HttpService {
 
       String aStr = map['content']['rendered'].replaceAll("&#8220;", '"');
       aStr = aStr.replaceAll("&#8221;", '"');
-      aStr = aStr.replaceAll("&#8243;", '');
+      aStr = aStr.replaceAll("&#8243;", '"');
       print(aStr);
       Rendered body = Rendered.fromJson(jsonDecode(aStr));
       print(body);

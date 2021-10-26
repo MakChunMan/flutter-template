@@ -25,7 +25,7 @@ class HttpService {
       print(aStr);
       Rendered body = Rendered.fromJson(jsonDecode(aStr));
 
-      print(PropertiesUtil.get("apiUrl"));
+      print(PropertiesUtil.getProp("apiUrl"));
     } else {
       throw "Unable to retrieve posts.";
     }

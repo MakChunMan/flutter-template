@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'testjson.dart';
 import 'package:global_configuration/global_configuration.dart';
+import 'dart:io';
+import 'dart:convert';
 
 void main() async {
-  try {
-    await rootBundle.loadString('assets/config/test.txt');
-    await GlobalConfiguration().loadFromAsset("dev");
-  } catch (e) {
-    // something went wrong while fetching the config from the url ... do something
-    print("Exception: " + e.toString());
-  }
-
+  final configFile = File('dev.json');
+  final jsonString = await configFile.readAsString();
+  final dynamic jsonMap = jsonDecode(jsonString);
+  print(jsonMap);
   runApp(MyApp());
 }
 

@@ -14,7 +14,7 @@ class WP_Page_menu {
     return WP_Page_menu(
       id: json['id'] as int,
       //content: Rendered.fromJson(json['content']),
-      content: json['content'] as String,
+      content: "test",
     );
   }
 }

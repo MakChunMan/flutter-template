@@ -15,8 +15,9 @@ class TestJsonPage extends StatelessWidget {
         future: httpService.getWPPage(),
         builder: (BuildContext context, AsyncSnapshot<WP_Page_menu> snapshot) {
           if (snapshot.hasData) {
-            String responseStr = snapshot.data.content;
-            return Text(responseStr);
+            print("here");
+            //String responseStr = snapshot.data.content;
+            return Text("here");
           } else {
             return Center(child: CircularProgressIndicator());
           }

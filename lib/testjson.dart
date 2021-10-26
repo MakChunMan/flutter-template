@@ -11,11 +11,11 @@ class TestJsonPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Posts"),
       ),
-      body: FutureBuilder<List<WP_Page_menu>>(
+      body: FutureBuilder<WP_Page_menu>(
         future: httpService.getWPPage(),
-        builder: (BuildContext context, AsyncSnapshot<List<WP_Page_menu>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<WP_Page_menu> snapshot) {
           if (snapshot.hasData) {
-            String responseStr = snapshot.data[0].content.rendered;
+            String responseStr = snapshot.data.content.rendered;
             return Text(responseStr);
           } else {
             return Center(child: CircularProgressIndicator());

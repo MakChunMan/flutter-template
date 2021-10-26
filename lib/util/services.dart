@@ -12,6 +12,8 @@ class HttpService {
       Map<String, dynamic> map = jsonDecode(res.body);
 
       String aStr = map['content']['rendered'].replaceAll("&#8220;", '"');
+      aStr = aStr.replaceAll("\n<p>", "");
+      aStr = aStr.replaceAll("\n</p>", "");
       aStr = aStr.replaceAll("&#8221;", '"');
       aStr = aStr.replaceAll("&#8243;", '"');
       print(aStr);

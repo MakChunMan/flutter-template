@@ -1,9 +1,9 @@
-import 'package:global_configuration/global_configuration.dart';
 import 'package:flutter/material.dart';
-import 'posts.dart';
 import 'testjson.dart';
+import 'package:global_configuration/global_configuration.dart';
 
 void main() {
+  await GlobalConfiguration().loadFromAsset("dev");
   runApp(MyApp());
 }
 

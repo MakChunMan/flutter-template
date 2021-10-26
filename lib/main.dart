@@ -7,7 +7,7 @@ void main() async {
     await GlobalConfiguration().loadFromAsset("dev");
   } catch (e) {
     // something went wrong while fetching the config from the url ... do something
-    print(e.toString());
+    print("Exception: " + e.toString());
   }
 
   runApp(MyApp());

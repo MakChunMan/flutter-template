@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'testjson.dart';
 import 'package:global_configuration/global_configuration.dart';
 
-void main() {
+void main() async {
   await GlobalConfiguration().loadFromAsset("dev");
   runApp(MyApp());
 }

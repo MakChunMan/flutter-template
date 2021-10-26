@@ -6,7 +6,7 @@ import '../util/wppage_menu_model.dart';
 
 class PropertiesRestService {
   Future<String> getContentFromWPpage(String pageId) async {
-    Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,content"));
+    Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "pages/" + pageId + "?_fields=id,content"));
     print("URL:" + PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,content");
     if (res.statusCode == 200) {
       print("Get 200 from pageId" + pageId);

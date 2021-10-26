@@ -11,9 +11,9 @@ class TestJsonPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Posts"),
       ),
-      body: FutureBuilder<WP_Page_menu>(
+      body: FutureBuilder<String>(
         future: httpService.getWPPage(),
-        builder: (BuildContext context, AsyncSnapshot<WP_Page_menu> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
             print("here");
             //String responseStr = snapshot.data.content;

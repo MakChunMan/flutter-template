@@ -16,7 +16,7 @@ class TestJsonPage extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<Rendered> snapshot) {
           if (snapshot.hasData) {
             Rendered responseStr = snapshot.data;
-            return Text("App ID:" + responseStr.app_id);
+            return Text("App ID:" + responseStr.app_id + "; Param List size:" + responseStr.menuitems.length.toString());
           } else {
             return Center(child: CircularProgressIndicator());
           }

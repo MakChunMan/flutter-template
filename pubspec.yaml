@@ -45,7 +45,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/config/
-    - assets/cfg
+    - assets/cfg/
     
   # To add assets to your application, add an assets section, like this:
   # assets:

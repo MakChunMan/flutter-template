@@ -1,11 +1,18 @@
-import 'package:http/http.dart' as http;
-
 import 'dart:convert';
 import 'package:http/http.dart';
 import 'post_model.dart';
 
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
+
+  Future<String> getWPPage() async {
+    Response res = await get(Uri.parse("https://flutter-backend.imagworkshop.com/wp-json/wp/v2/pages/52?_fields=id,content"));
+    if (res.statusCode == 200) {
+      return res.body;
+    } else {
+      throw "Unable to retrieve posts.";
+    }
+  }
 
   Future<List> getPosts() async {
     Response res = await get(Uri.parse(postsURL));
@@ -33,5 +40,11 @@ class HttpService {
     } else {
       throw "Unable to delete post.";
     }
+  }
+
+  retryFuture(future, delay) {
+    Future.delayed(Duration(milliseconds: delay), () {
+      future();
+    });
   }
 }

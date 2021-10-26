@@ -1,9 +1,11 @@
+import "dart:collection";
+
 class PropertiesUtil {
   static String getProp(String key) {
     return PropertiesUtil.propertiesMap()[key];
   }
 
-  static Map<String, String> propertiesMap() {
+  static LinkedHashMap<String, String> propertiesMap() {
     Map astr = {
       "app-id": "flutter-template",
       "app-name": "flutter-template 1.0",

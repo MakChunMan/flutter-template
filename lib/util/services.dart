@@ -11,7 +11,7 @@ class HttpService {
     if (res.statusCode == 200) {
       Map<String, dynamic> map = jsonDecode(res.body);
       print(map['content']);
-      Rendered body = Rendered.fromJson(map['content']['rendered']);
+      Rendered body = Rendered.fromJson(jsonDecode(map['content']['rendered']));
       print(body);
       return "test";
     } else {

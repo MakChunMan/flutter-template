@@ -17,7 +17,7 @@ class TestJsonPage extends StatelessWidget {
           if (snapshot.hasData) {
             print("here");
             //String responseStr = snapshot.data.content;
-            return Text(snapshot.data.content.rendered);
+            return Text("here");
           } else {
             return Center(child: CircularProgressIndicator());
           }

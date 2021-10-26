@@ -4,8 +4,8 @@ import 'testjson.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main() async {
-  await rootBundle.loadString('assets/config/test.txt');
   try {
+    await rootBundle.loadString('assets/config/test.txt');
     await GlobalConfiguration().loadFromAsset("dev");
   } catch (e) {
     // something went wrong while fetching the config from the url ... do something

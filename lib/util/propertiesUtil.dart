@@ -12,7 +12,7 @@ class PropertiesUtil {
   static final PropertiesRestService restService = PropertiesRestService();
 
   static String getProp(String key) {
-    return PropertiesUtil.propertiesMap[key].toString();
+    return propertiesMap[key].toString();
   }
 
   static Map propertiesMap = new Map();

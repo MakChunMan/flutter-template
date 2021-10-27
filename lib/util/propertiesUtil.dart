@@ -15,7 +15,7 @@ class PropertiesUtil {
     return PropertiesUtil.propertiesMap[key].toString();
   }
 
-  static Map propertiesMap;
+  static Map propertiesMap = new Map();
 
   static void loadMap() async {
     propertiesMap.addAll(initParamMap);

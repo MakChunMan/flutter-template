@@ -29,9 +29,11 @@ class PropertiesRestService {
     print("start getAppProperitesFromWPpage");
     String contentStr = await getContentFromWPpage(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
     print("after await:" + contentStr);
-    Map aMap = jsonDecode(contentStr);
+    Map<String, dynamic> aMap = jsonDecode(contentStr);
     if (aMap == null) {
       print("aMap = =null");
+    } else {
+      print("aMap is not null");
     }
     print("end getAppProperitesFromWPpage" + aMap.length.toString());
     return aMap;

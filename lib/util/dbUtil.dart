@@ -4,7 +4,7 @@ class DBUtil {
   static var db;
 
   static initDB() async {
-    print('initDB() started');
+    print('initDB() started:' + await getDatabasesPath());
     db = await openDatabase('localstorage.db', version: 1, onCreate: (Database db, int version) async {
       await db.execute('''
           create table LocalStorage(

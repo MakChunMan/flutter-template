@@ -16,6 +16,7 @@ class HttpService {
     return aStr;
   }
 
+  /***
   Future<Rendered> getWPPage() async {
     Response res = await get(Uri.parse("https://flutter-backend.imagworkshop.com/wp-json/wp/v2/pages/52?_fields=id,content"));
     if (res.statusCode == 200) {
@@ -30,6 +31,7 @@ class HttpService {
       throw "Unable to retrieve posts.";
     }
   }
+  */
 
   Future<List> getPosts() async {
     Response res = await get(Uri.parse(postsURL));

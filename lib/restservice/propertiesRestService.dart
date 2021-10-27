@@ -14,7 +14,7 @@ class PropertiesRestService {
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
       print("===> Content:" + aStr);
-      return aStr;
+      return Future.value(aStr);
     } else {
       throw "Unable to retrieve posts.";
     }

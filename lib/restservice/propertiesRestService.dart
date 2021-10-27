@@ -41,10 +41,6 @@ class PropertiesRestService {
   }
 
   Future<Rendered> getMenuFromWPpage() async {
-    Timer(Duration(seconds: 3), () {
-      print("Yeah, this line is printed after 3 second");
-    });
-
     print("start getMenuFromWPpage: " + PropertiesUtil.getProp("pageid-menu"));
     if (PropertiesUtil.getProp("pageid-menu") == null) {}
     String contentStr = await getContentFromWPpage(PropertiesUtil.getProp("pageid-menu"));

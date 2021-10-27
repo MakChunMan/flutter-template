@@ -7,18 +7,18 @@ import 'dart:async';
 Future<void> main() async {
   //Load parameters; TODO: To be replaced
   Future a = PropertiesUtil.loadMap();
+  /***
   a.then((s) => print('Load param:' + s)).catchError(() => print('Error')).whenComplete(() {
     print('Complete');
     runApp(MyApp());
     print("Started MyApp:" + PropertiesUtil.propertiesMap.length.toString());
-  });
+  }); */
 
-  Future b = DBUtil.initDB();
   var loadPropertiesFuture = a;
-  var loadDBFuture = b;
+
   Future.wait([
     loadPropertiesFuture,
-    loadDBFuture
+    //loadDBFuture
   ]).then((s) {
     print('Loading process completed');
     runApp(MyApp());

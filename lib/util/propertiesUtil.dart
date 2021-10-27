@@ -1,4 +1,6 @@
 import "../restservice/propertiesRestService.dart";
+import 'package:shared_preferences/shared_preferences.dart';
+import "dbUtil.dart";
 
 class PropertiesUtil {
   static Map initParamMap = {
@@ -15,7 +17,7 @@ class PropertiesUtil {
     if (propertiesMap[key] != null) {
       return propertiesMap[key].toString();
     } else {
-      //return LocalStorageUtil.getFromStorage(key);
+      return DBUtil.prefs.getString(key);
     }
   }
 
@@ -26,15 +28,17 @@ class PropertiesUtil {
 
     Future<Map> propertiesMapFromWP = restService.getAppProperitesFromWPpage();
     Map m = await propertiesMapFromWP;
+    //Init localStorage
+    await DBUtil.init();
     propertiesMap.addAll(m["properties"]);
     print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
     print("Save into localStorage");
-    //LocalStorageUtil.clearStorage();
+    SharedPreferences pref = DBUtil.prefs;
     propertiesMap.keys.forEach((k) {
       print(k + ":" + propertiesMap[k].toString());
+      pref.setString(k, propertiesMap[k]);
       //LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
     });
-
     return Future.value("Done");
     /**
     propertiesMapFromWP.then((m) {

@@ -21,12 +21,19 @@ class PropertiesUtil {
     propertiesMap.addAll(initParamMap);
 
     Future<Map> propertiesMapFromWP = restService.getAppProperitesFromWPpage();
+    Map m = await propertiesMapFromWP;
+    propertiesMap.addAll(m["properties"]);
+    print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
+    propertiesMap.keys.forEach((k) => print(k + ":" + propertiesMap[k].toString()));
+    return Future.value("Done");
+    /**
     propertiesMapFromWP.then((m) {
       propertiesMap.addAll(m["properties"]);
       print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
       propertiesMap.keys.forEach((k) => print(k + ":" + propertiesMap[k].toString()));
-    });
-    return Future.value("Done");
+    }).whenComplete(() => return Future.value("Done"));
+     */
+
     /**
     Map propertiesMapFromWP = await restService.getAppProperitesFromWPpage();
     aMap.addAll(propertiesMapFromWP);

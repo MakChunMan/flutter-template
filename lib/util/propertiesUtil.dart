@@ -22,10 +22,9 @@ class PropertiesUtil {
 
     Future<Map> propertiesMapFromWP = restService.getAppProperitesFromWPpage();
     propertiesMapFromWP.then((m) {
-      print(m);
       propertiesMap.addAll(m["properties"]);
       print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
-      propertiesMap.keys.forEach((k) => print(k + "-" + m[k]));
+      propertiesMap.keys.forEach((k) => print(k + "-" + propertiesMap[k]));
     });
     return Future.value("Done");
     /**

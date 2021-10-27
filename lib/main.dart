@@ -23,7 +23,7 @@ Future<void> main() async {
     print('Loading process completed');
     runApp(MyApp());
     print("Started MyApp:" + PropertiesUtil.propertiesMap.length.toString());
-  });
+  }).catchError(() => print('Some error'));
 }
 
 class MyApp extends StatelessWidget {

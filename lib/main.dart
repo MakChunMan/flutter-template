@@ -19,11 +19,14 @@ Future<void> main() async {
   Future.wait([
     loadPropertiesFuture,
     //loadDBFuture
-  ]).then((s) {
-    print('Loading process completed');
-    runApp(MyApp());
-    print("Started MyApp:" + PropertiesUtil.propertiesMap.length.toString());
-  }).catchError(() => print('Some error'));
+  ])
+      .then((s) {
+        print('Loading process completed');
+        runApp(MyApp());
+        print("Started MyApp:" + PropertiesUtil.propertiesMap.length.toString());
+      })
+      .catchError(() => print('Some error'))
+      .whenComplete(() => print("Pref size: " + DBUtil.prefs.getKeys().length.toString()));
 }
 
 class MyApp extends StatelessWidget {

@@ -24,9 +24,9 @@ class TestJsonPageState extends State<TestJsonPage> {
   }
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    await getMenu();
+    getMenu();
   }
 
   @override

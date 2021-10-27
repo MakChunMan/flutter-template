@@ -20,6 +20,7 @@ class TestJsonPage extends StatelessWidget {
             Rendered responseStr = snapshot.data;
             return Text("App ID:" + responseStr.app_id + "; Param List size:" + responseStr.menuitems.length.toString());
           } else {
+            print("Error:");
             return Center(child: CircularProgressIndicator());
           }
         },

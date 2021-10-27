@@ -46,7 +46,7 @@ class PropertiesRestService {
     contentStr.then((s) {
       return Rendered.fromJson(jsonDecode(s));
     }); */
-    print("start getMenuFromWPpage");
+    print("start getMenuFromWPpage: " + PropertiesUtil.getProp("pageid-menu"));
     String contentStr = await getContentFromWPpage(PropertiesUtil.getProp("pageid-menu"));
     return Rendered.fromJson(jsonDecode(contentStr));
   }

@@ -4,8 +4,7 @@ import 'testjson.dart';
 
 void main() async {
   //Load parameters;
-  PropertiesUtil.loadMap();
-  runApp(MyApp());
+  PropertiesUtil.loadMap().whenComplete(() => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {

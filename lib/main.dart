@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'util/propertiesUtil.dart';
 import 'testjson.dart';
 
-void main() async {
+Future<void> main() async {
   //Load parameters;
-  PropertiesUtil.loadMap().whenComplete(() {
-    print("Complete");
-    runApp(MyApp());
-  });
-
+  await PropertiesUtil.loadMap();
+  runApp(MyApp());
   print("Started MyApp");
 }
 

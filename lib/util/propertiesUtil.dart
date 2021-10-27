@@ -38,7 +38,7 @@ class PropertiesUtil {
     SharedPreferences pref = DBUtil.prefs;
     propertiesMap.keys.forEach((k) {
       print(k + ":" + propertiesMap[k].toString());
-      pref.setString(k, propertiesMap[k]);
+      pref.setString(k, propertiesMap[k].toString());
       //LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
     });
     return Future.value("Done");

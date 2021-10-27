@@ -4,9 +4,12 @@ import 'testjson.dart';
 
 Future<void> main() async {
   //Load parameters;
-  await PropertiesUtil.loadMap();
-  runApp(MyApp());
-  print("Started MyApp");
+  Future a = PropertiesUtil.loadMap();
+  a.then(() => print('Load param')).catchError(() => print('Error')).whenComplete(() {
+    print('Complete');
+    runApp(MyApp());
+    print("Started MyApp");
+  });
 }
 
 class MyApp extends StatelessWidget {

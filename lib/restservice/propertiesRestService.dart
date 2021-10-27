@@ -30,7 +30,10 @@ class PropertiesRestService {
     String contentStr = await getContentFromWPpage(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
     print("after await:" + contentStr);
     Map aMap = jsonDecode(contentStr);
-    print("end getAppProperitesFromWPpage" + aMap.toString());
+    if (aMap == null) {
+      print("aMap = =null");
+    }
+    print("end getAppProperitesFromWPpage" + aMap.length.toString());
     return aMap;
     //Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "/pages/" + PropertiesUtil.getProp("apiUrl") + "?_fields=id,content"));
   }

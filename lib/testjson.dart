@@ -4,13 +4,35 @@ import 'restservice/propertiesRestService.dart';
 import 'util/wppage_menu_model.dart';
 import 'component/appbar.dart';
 
-class TestJsonPage extends StatelessWidget {
+class TestJsonPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new TestJsonPageState();
+  }
+}
+
+class TestJsonPageState extends State<TestJsonPage> {
   final HttpService httpService = HttpService();
   final PropertiesRestService restService = PropertiesRestService();
+
+  var renderedJsonStr = new List();
+
+  Future<Rendered> getMenu() async {
+    Rendered a = await restService.getMenuFromWPpage();
+    renderedJsonStr = a.menuitems;
+    return a;
+  }
+
+  @override
+  void initState() async {
+    super.initState();
+    await getMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar("Posts Jason", "test"),
+      appBar: AppBarComponent.getAppBar("Posts Jason", renderedJsonStr),
       body: FutureBuilder<Rendered>(
         //future: httpService.getWPPage(),
         future: restService.getMenuFromWPpage(),

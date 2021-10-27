@@ -5,7 +5,7 @@ import 'testjson.dart';
 Future<void> main() async {
   //Load parameters;
   Future a = PropertiesUtil.loadMap();
-  a.then(() => print('Load param')).catchError(() => print('Error')).whenComplete(() {
+  a.then((s) => print('Load param:' + s)).catchError(() => print('Error')).whenComplete(() {
     print('Complete');
     runApp(MyApp());
     print("Started MyApp");

@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 class DBUtil {
   static var db;
 
-  static initDB() async {
+  static Future<String> initDB() async {
     print('initDB() started:' + await getDatabasesPath());
     db = await openDatabase('localstorage.db', version: 1, onCreate: (Database db, int version) async {
       await db.execute('''
@@ -13,6 +13,7 @@ class DBUtil {
             Value text not null)
           ''');
     });
+    return new Future.value("Done");
   }
 
   checkDB() {

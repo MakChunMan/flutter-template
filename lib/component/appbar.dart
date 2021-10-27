@@ -16,10 +16,20 @@ class AppBarComponent {
   }
 
   static PopupMenuButton getPopupMenuButton(List<dynamic> menuItems) {
-    List<PopupMenuItem> items = new List<PopupMenuItem>();
+    List items = new List();
     menuItems.forEach((s) => {
-          items.add(new PopupMenuItem(child: s["name"], value: s["page-id"]))
+          items.add(PopupMenuItem(child: s["name"], value: s["page-id"]))
         });
-    return PopupMenuButton(icon: Icon(Icons.more_horiz), itemBuilder: (context) => menuItems);
+    return PopupMenuButton(icon: Icon(Icons.more_horiz), itemBuilder: (context) => menuItems
+        /**
+      itemBuilder: (context) {
+                  return menuItems.map((PopupItem choice) {
+                    return PopupMenuItem(
+                      value: choice,
+                      child: Text(choice.name),
+                    );
+                  }).toList();
+                } */
+        );
   }
 }

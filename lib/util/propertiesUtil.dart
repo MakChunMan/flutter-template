@@ -25,7 +25,7 @@ class PropertiesUtil {
       print(m);
       propertiesMap.addAll(m["properties"]);
       print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
-      m.keys.forEach((k) => print(k + "-" + m[k]));
+      propertiesMap.keys.forEach((k) => print(k + "-" + m[k]));
     });
     return Future.value("Done");
     /**

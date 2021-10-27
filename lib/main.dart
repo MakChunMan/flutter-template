@@ -4,8 +4,11 @@ import 'testjson.dart';
 
 void main() async {
   //Load parameters;
-  await PropertiesUtil.loadMap();
-  runApp(MyApp());
+  PropertiesUtil.loadMap().whenComplete(() {
+    print("Complete");
+    runApp(MyApp());
+  });
+
   print("Started MyApp");
 }
 

@@ -20,6 +20,7 @@ class AppBarComponent {
     List items = menuItems.map((s) {
       return PopupMenuItem(child: s["name"], value: s["page-id"]);
     }).toList();
+    print("items" + items.length.toString());
     /**
     menuItems.forEach((s) => {
           items.add(PopupMenuItem(child: s["name"], value: s["page-id"]))

@@ -1,5 +1,4 @@
 import "../restservice/propertiesRestService.dart";
-import "localstorageUtil.dart";
 
 class PropertiesUtil {
   static Map initParamMap = {
@@ -16,7 +15,7 @@ class PropertiesUtil {
     if (propertiesMap[key] != null) {
       return propertiesMap[key].toString();
     } else {
-      return LocalStorageUtil.getFromStorage(key);
+      //return LocalStorageUtil.getFromStorage(key);
     }
   }
 
@@ -30,10 +29,10 @@ class PropertiesUtil {
     propertiesMap.addAll(m["properties"]);
     print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
     print("Save into localStorage");
-    LocalStorageUtil.clearStorage();
+    //LocalStorageUtil.clearStorage();
     propertiesMap.keys.forEach((k) {
       print(k + ":" + propertiesMap[k].toString());
-      LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
+      //LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
     });
 
     return Future.value("Done");

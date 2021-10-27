@@ -19,7 +19,9 @@ class TestJsonPageState extends State<TestJsonPage> {
 
   Future<Rendered> getMenu() async {
     Rendered a = await restService.getMenuFromWPpage();
-    renderedJsonStr = a.menuitems;
+    setState(() {
+      renderedJsonStr = a.menuitems;
+    });
     return a;
   }
 

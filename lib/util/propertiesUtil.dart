@@ -24,7 +24,7 @@ class PropertiesUtil {
     propertiesMapFromWP.then((m) {
       propertiesMap.addAll(m["properties"]);
       print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
-      propertiesMap.keys.forEach((k) => print(k + "-" + propertiesMap[k]));
+      propertiesMap.keys.forEach((k) => print(k + ":" + propertiesMap[k].toString()));
     });
     return Future.value("Done");
     /**

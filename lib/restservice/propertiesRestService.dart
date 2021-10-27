@@ -9,7 +9,7 @@ class PropertiesRestService {
     Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "pages/" + pageId + "?_fields=id,content"));
     print("URL:" + PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,content");
     if (res.statusCode == 200) {
-      print("Get 200 from pageId" + pageId);
+      print("Get 200 from pageId:" + pageId);
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
       print("===> Content:" + aStr);
@@ -21,8 +21,10 @@ class PropertiesRestService {
 
   Future<Map> getAppProperitesFromWPpage() async {
     Future<String> contentStr = getContentFromWPpage(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
-    contentStr.then((s) => {});
-    Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "/pages/" + PropertiesUtil.getProp("apiUrl") + "?_fields=id,content"));
+    contentStr.then((s) {
+      return jsonDecode(s);
+    });
+    //Response res = await get(Uri.parse(PropertiesUtil.getProp("apiUrl") + "/pages/" + PropertiesUtil.getProp("apiUrl") + "?_fields=id,content"));
   }
 
   Future<Rendered> getMenuFromWPpage() async {

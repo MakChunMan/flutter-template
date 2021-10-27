@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'util/propertiesUtil.dart';
 import 'testjson.dart';
+import 'dart:async';
 
 Future<void> main() async {
   //Load parameters;
@@ -8,7 +9,7 @@ Future<void> main() async {
   a.then((s) => print('Load param:' + s)).catchError(() => print('Error')).whenComplete(() {
     print('Complete');
     runApp(MyApp());
-    print("Started MyApp");
+    print("Started MyApp:" + PropertiesUtil.propertiesMap.length.toString());
   });
 }
 

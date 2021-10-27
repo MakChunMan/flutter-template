@@ -41,12 +41,12 @@ class PropertiesRestService {
   }
 
   Future<Rendered> getMenuFromWPpage() async {
-    /***
-    Future<String> contentStr = getContentFromWPpage(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
-    contentStr.then((s) {
-      return Rendered.fromJson(jsonDecode(s));
-    }); */
+    Timer(Duration(seconds: 3), () {
+      print("Yeah, this line is printed after 3 second");
+    });
+
     print("start getMenuFromWPpage: " + PropertiesUtil.getProp("pageid-menu"));
+    if (PropertiesUtil.getProp("pageid-menu") == null) {}
     String contentStr = await getContentFromWPpage(PropertiesUtil.getProp("pageid-menu"));
     return Rendered.fromJson(jsonDecode(contentStr));
   }

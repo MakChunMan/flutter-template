@@ -15,10 +15,10 @@ class PropertiesUtil {
 
   static String getProp(String key) {
     if (propertiesMap[key] != null) {
-      print("Load from memory: key-" + key.toString());
+      //print("Load from memory: key-" + key.toString());
       return propertiesMap[key].toString();
     } else {
-      print("Load from localstorage: key-" + key.toString());
+      //print("Load from localstorage: key-" + key.toString());
       return DBUtil.prefs.getString(key);
     }
   }

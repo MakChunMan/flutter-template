@@ -10,7 +10,7 @@ class TestJsonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar("Posts", null),
+      appBar: AppBarComponent.getAppBar("Posts Jason", "test"),
       body: FutureBuilder<Rendered>(
         //future: httpService.getWPPage(),
         future: restService.getMenuFromWPpage(),

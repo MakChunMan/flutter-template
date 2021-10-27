@@ -1,4 +1,5 @@
 import "../restservice/propertiesRestService.dart";
+import "localstorageUtil.dart";
 
 class PropertiesUtil {
   static Map initParamMap = {
@@ -12,7 +13,11 @@ class PropertiesUtil {
   static final PropertiesRestService restService = PropertiesRestService();
 
   static String getProp(String key) {
-    return propertiesMap[key].toString();
+    if (propertiesMap[key] != null) {
+      return propertiesMap[key].toString();
+    } else {
+      return LocalStorageUtil.getFromStorage(key);
+    }
   }
 
   static Map propertiesMap = new Map();
@@ -24,7 +29,13 @@ class PropertiesUtil {
     Map m = await propertiesMapFromWP;
     propertiesMap.addAll(m["properties"]);
     print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
-    propertiesMap.keys.forEach((k) => print(k + ":" + propertiesMap[k].toString()));
+    print("Save into localStorage");
+    LocalStorageUtil.clearStorage();
+    propertiesMap.keys.forEach((k) {
+      print(k + ":" + propertiesMap[k].toString());
+      LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
+    });
+
     return Future.value("Done");
     /**
     propertiesMapFromWP.then((m) {

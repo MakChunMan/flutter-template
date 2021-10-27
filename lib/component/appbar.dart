@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class AppBarComponent {
   static AppBar getAppBar(String title, String menuJson) {
     PopupMenuButton popupMenuButton = null;
+    List<Widget> topButtonList = new List<Widget>();
 
     if (menuJson != null) {
       popupMenuButton = getPopupMenuButton(menuJson);
+      topButtonList.add(popupMenuButton);
     }
     return AppBar(
       title: Text(title),
-      actions: [
-        popupMenuButton
-      ],
+      actions: topButtonList,
     );
   }
 

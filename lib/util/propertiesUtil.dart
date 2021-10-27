@@ -4,7 +4,7 @@ class PropertiesUtil {
   static Map initParamMap = {
     "app-id": "flutter-template",
     "app-name": "flutter-template 1.0",
-    "apiUrl": "https://flutter-backend.imagworkshop.com/wp-json/wp/v2/",
+    "apiUrl": "https://flutter-backend.imagworkshop.com/wp-json/wp/v2",
     "app-version": "0.0.1",
     "pageid-initparam": 57
   };
@@ -22,14 +22,15 @@ class PropertiesUtil {
 
     Future<Map> propertiesMapFromWP = restService.getAppProperitesFromWPpage();
     propertiesMapFromWP.then((m) {
-      propertiesMap.addAll(m);
+      print(m);
+      propertiesMap.addAll(m["properties"]);
+      print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
     });
     /**
     Map propertiesMapFromWP = await restService.getAppProperitesFromWPpage();
     aMap.addAll(propertiesMapFromWP);
     return propertiesMapFromWP;
      */
-    print("Loading param done (map size:" + propertiesMap.length.toString() + ")");
   }
 
   static final String appId = "app-id";

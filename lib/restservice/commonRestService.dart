@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart';
 import '../util/propertiesUtil.dart';
+import '../util/stringUtil.dart';
 import '../util/services.dart';
 import '../model/genericPageModel.dart';
 
@@ -13,10 +14,11 @@ class CommonRestService {
       print("Get 200 from pageId:" + pageId);
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
-      print("===> Content:" + aStr);
+      print("===> Content:" + StringUtil.trim(aStr, 200) + "...");
       return aStr;
     } else {
-      throw "[PageRestService] Unable to retrieve posts. (Return code: $res.statusCode)";
+      var statusCode = res.statusCode;
+      throw "[PageRestService] Unable to retrieve posts. (Return code: $statusCode)";
     }
   }
 

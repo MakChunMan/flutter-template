@@ -1,4 +1,12 @@
 class StringUtil {
+  static String trim(String str, int maxlength) {
+    if (str.length > maxlength) {
+      return str.substring(1, maxlength);
+    } else {
+      return str;
+    }
+  }
+
   static List<String> split(String string, String separator, {int max = 0}) {
     List<String> result = [];
 

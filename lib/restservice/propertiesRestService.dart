@@ -50,7 +50,7 @@ class PropertiesRestService {
       if (aList == null) {
         print("List = null");
       }
-      print("Splitting $s into " + aList.length.toString());
+      //print("Splitting $s into " + aList.length.toString());
       if (aList.length > 1) {
         aMap[aList[0]] = aList[1];
       } else {

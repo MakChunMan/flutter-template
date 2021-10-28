@@ -38,7 +38,7 @@ class AppBarComponent {
         onSelected: (result) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => GenericPage(result)),
+            MaterialPageRoute(builder: (context) => GenericPage(pageId: result)),
           );
         },
         itemBuilder: (context) => newList);

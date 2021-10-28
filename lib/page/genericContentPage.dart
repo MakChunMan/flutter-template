@@ -11,7 +11,7 @@ class GenericPage extends StatefulWidget {
   GenericPage({Key key, this.pageId}) : super(key: key);
 
   //In-param
-  String pageId;
+  final String pageId;
 
   @override
   _GenericPageState createState() => _GenericPageState(this.pageId);

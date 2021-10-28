@@ -21,10 +21,13 @@ class AppBarComponent {
       print("menuItems is null");
       return null;
     }
-    List items = menuItems.map((s) {
-      return PopupMenuItem(child: s["name"], value: s["page-id"]);
-    }).toList();
-    print("items" + items.length.toString());
+    List newList = new List<PopupMenuItem>();
+    menuItems.forEach((s) {
+      print(s["name"] + s["page-id"]);
+      newList.add(new PopupMenuItem(child: s["name"], value: s["page-id"]));
+    });
+
+    print("items" + newList.length.toString());
     /**
     menuItems.forEach((s) => {
           items.add(PopupMenuItem(child: s["name"], value: s["page-id"]))

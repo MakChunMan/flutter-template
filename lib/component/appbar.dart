@@ -23,7 +23,7 @@ class AppBarComponent {
       print("menuItems is null");
       return null;
     }
-    var newList;
+    List<PopupMenuItem> newList = [];
     menuItems.forEach((s) {
       print(s.name + s.pageid);
       newList.add(new PopupMenuItem(child: Text(s.name), value: s.pageid));

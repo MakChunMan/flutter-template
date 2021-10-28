@@ -41,6 +41,7 @@ class PropertiesRestService {
     if (lines.length == 1) {
       lines = contentStr.split("<br>");
     }
+    print("How many lines:" + lines.length.toString());
     Map<String, dynamic> aMap = new Map<String, String>();
     lines.map((s) {
       List<String> aList = StringUtil.split(s, "=", max: 1);

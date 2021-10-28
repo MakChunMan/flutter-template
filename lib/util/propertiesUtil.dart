@@ -12,6 +12,9 @@ class PropertiesUtil {
     "pageid-initparam": 57
   };
 
+  static Map propertiesMap = new Map();
+  static Map strMap = new Map();
+
   static final PropertiesRestService restService = PropertiesRestService();
 
   static String getProp(String key) {
@@ -24,8 +27,27 @@ class PropertiesUtil {
     }
   }
 
-  static Map propertiesMap = new Map();
-  static Map strMap = new Map();
+  static String getSTR(String key) {
+    return getSTRByLang(key, getLang());
+  }
+
+  static String getSTRByLang(String key, String lang) {
+    if (strMap[lang] != null) {
+      return strMap[lang][key];
+    } else {
+      print("Missing STR " + key + " for " + lang);
+      return key + "-" + lang;
+    }
+  }
+
+  static String getLang() {
+    return getProp("lang");
+  }
+
+  static void setLang(String lang) {
+    propertiesMap["lang"] = lang;
+    DBUtil.prefs.setString("lang", lang);
+  }
 
   static Future<String> loadStrMap() async {
     Map strPageIdMap = Map.of(propertiesMap);
@@ -61,6 +83,11 @@ class PropertiesUtil {
       pref.setString(k, propertiesMap[k].toString());
       //LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
     });
+
+    //Lang
+    if (getProp("lang") == null) {
+      setLang("zh");
+    }
 
     String s = await loadStrMap();
 

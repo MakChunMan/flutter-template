@@ -2,7 +2,7 @@ import 'dart:convert';
 import '../util/propertiesUtil.dart';
 import '../util/stringUtil.dart';
 import '../util/wppage_menu_model.dart';
-import 'pageRestService.dart';
+import 'commonRestService.dart';
 
 class PropertiesRestService {
   Future<Map> getAppProperitesFromWPpage() async {
@@ -12,7 +12,7 @@ class PropertiesRestService {
       return jsonDecode(s);
     }); */
     print("start getAppProperitesFromWPpage");
-    String contentStr = await PageRestService.getPageContent(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
+    String contentStr = await CommonRestService.getPageString(PropertiesUtil.getProp(PropertiesUtil.pageid_initparam));
     print("after await:" + contentStr);
     Map<String, dynamic> aMap = jsonDecode(contentStr);
     if (aMap == null) {
@@ -26,13 +26,13 @@ class PropertiesRestService {
   Future<Rendered> getMenuFromWPpage() async {
     print("start getMenuFromWPpage: " + PropertiesUtil.getProp("pageid-menu"));
     if (PropertiesUtil.getProp("pageid-menu") == null) {}
-    String contentStr = await PageRestService.getPageContent(PropertiesUtil.getProp("pageid-menu"));
+    String contentStr = await CommonRestService.getPageString(PropertiesUtil.getProp("pageid-menu"));
     return Rendered.fromJson(jsonDecode(contentStr));
   }
 
   Future<Map> getSTRFromWPpage(String pageId) async {
     print("start getSTRFromWPpage");
-    String contentStr = await PageRestService.getPageContent(pageId);
+    String contentStr = await CommonRestService.getPageString(pageId);
     print("after await:" + contentStr);
 
     LineSplitter ls = new LineSplitter();

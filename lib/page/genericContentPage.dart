@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../util/services.dart';
-import '../restservice/pageRestService.dart';
+import '../restservice/commonRestService.dart';
 import '../component/appbar.dart';
 import '../model/genericPageModel.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_html/flutter_html.dart';
 
 class GenericPage extends StatefulWidget {
   GenericPage({Key key, this.pageId}) : super(key: key);
@@ -22,32 +23,28 @@ class _GenericPageState extends State<GenericPage> {
   _GenericPageState(this.pageId);
 
   //Page Model
-  late Future<GenericPageModel> futurePage;
+  Future<GenericPageModel> futurePage;
 
   @override
   void initState() {
     super.initState();
-    futurePage = PageRestService.getPageContent(pageId);
+    futurePage = CommonRestService.getPageContent(pageId);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar(context, "TEST", null),
-      body: const Center(
-        child: FutureBuilder<GenericPageModel>(
-          future: futurePage,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data!.title);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
-        ),
+      appBar: AppBarComponent.getAppBar(context, "Page ID $pageId", null),
+      body: FutureBuilder<GenericPageModel>(
+        future: futurePage,
+        builder: (BuildContext context, AsyncSnapshot<GenericPageModel> snapshot) {
+          if (snapshot.hasData) {
+            GenericPageModel page = snapshot.data;
+            return Html(data: page.content);
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }

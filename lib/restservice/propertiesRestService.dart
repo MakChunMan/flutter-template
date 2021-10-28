@@ -1,5 +1,6 @@
 import 'dart:convert';
 import '../util/propertiesUtil.dart';
+import '../util/stringUtil.dart';
 import '../util/wppage_menu_model.dart';
 import 'pageRestService.dart';
 
@@ -33,11 +34,23 @@ class PropertiesRestService {
     print("start getSTRFromWPpage");
     String contentStr = await PageRestService.getPageContent(pageId);
     print("after await:" + contentStr);
-    Map<String, dynamic> aMap = jsonDecode(contentStr);
+
+    LineSplitter ls = new LineSplitter();
+    List<String> lines = ls.convert(contentStr);
+    Map<String, dynamic> aMap = new Map<String, String>();
+    lines.map((s) {
+      List<String> aList = StringUtil.split(s, ":", max: 1);
+      if (aList.length > 1) {
+        aMap[aList[0]] = aList[1];
+      } else {
+        print("Fail to load str: " + s);
+      }
+    });
+
     if (aMap == null) {
       print("Fail to create str map...");
     }
-    print("end getSTRFromWPpage" + aMap.length.toString());
+    print("end getSTRFromWPpage - records loaded:" + aMap.length.toString());
     return aMap;
   }
 }

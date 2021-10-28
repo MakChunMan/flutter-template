@@ -1,6 +1,7 @@
 import "../restservice/propertiesRestService.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 import "dbUtil.dart";
+import "stringUtil.dart";
 
 class PropertiesUtil {
   static Map initParamMap = {

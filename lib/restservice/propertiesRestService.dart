@@ -37,9 +37,11 @@ class PropertiesRestService {
 
     LineSplitter ls = new LineSplitter();
     List<String> lines = ls.convert(contentStr);
+    print("How many lines:" + lines.length.toString());
     Map<String, dynamic> aMap = new Map<String, String>();
     lines.map((s) {
-      List<String> aList = StringUtil.split(s, ":", max: 1);
+      List<String> aList = StringUtil.split(s, "=", max: 1);
+      print("Splitting $s into " + aList.length.toString());
       if (aList.length > 1) {
         aMap[aList[0]] = aList[1];
       } else {

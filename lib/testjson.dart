@@ -35,7 +35,7 @@ class TestJsonPageState extends State<TestJsonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar("Posts Jason", renderedJsonStr),
+      appBar: AppBarComponent.getAppBar(context, "Posts Jason", renderedJsonStr),
       body: const Center(
         child: Text('Hello World'),
       ),

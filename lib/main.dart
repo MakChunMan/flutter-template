@@ -15,7 +15,6 @@ Future<void> main() async {
   }); */
 
   var loadPropertiesFuture = a;
-  var loadStrMap = PropertiesUtil.loadStrMap();
 
   Future.wait([
     loadPropertiesFuture,

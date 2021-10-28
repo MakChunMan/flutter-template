@@ -28,7 +28,8 @@ class PropertiesUtil {
 
   static Future<String> loadStrMap() async {
     Map strPageIdMap = Map.of(propertiesMap);
-    strPageIdMap.removeWhere((k, v) => v.startsWith('pageid-str-'));
+    print("original " + strPageIdMap.length.toString());
+    strPageIdMap.removeWhere((k, v) => !k.startsWith('pageid-str-'));
 
     strPageIdMap.forEach((k, v) async {
       var lang = k.replaceAll('pageid-str-', '');

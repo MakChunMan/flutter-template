@@ -37,7 +37,9 @@ class PropertiesUtil {
 
       var strMapString = await restService.getSTRFromWPpage(v);
       print('---' + lang + '---');
-      print(strMapString);
+      strMap[lang] = strMapString;
+
+      print(strMap[lang]["common_login"]);
     });
 
     return Future.value("Done");

@@ -4,7 +4,7 @@ import '../util/wppage_menu_model.dart';
 class AppBarComponent {
   static AppBar getAppBar(String title, List<dynamic> menuItems) {
     PopupMenuButton popupMenuButton = null;
-    List<Widget> topButtonList;
+    List<Widget> topButtonList = [];
     ;
 
     if (menuItems != null) {

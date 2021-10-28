@@ -7,6 +7,11 @@ import '../model/genericPageModel.dart';
 
 class CommonRestService {
   static Future<String> getPageString(String pageId) async {
+    GenericPageModel aStr = await getPageContent(pageId);
+    return aStr.content;
+  }
+
+  static Future<GenericPageModel> getPageContent(String pageId) async {
     String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,title,content";
     Response res = await get(Uri.parse(url));
     print("[PageRestService] - URL:" + url);
@@ -15,16 +20,13 @@ class CommonRestService {
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
       print("===> Content:" + StringUtil.trim(aStr, 200) + "...");
-      return aStr;
+
+      GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: map["title"]);
+
+      return aModel;
     } else {
       var statusCode = res.statusCode;
       throw "[PageRestService] Unable to retrieve posts. (Return code: $statusCode)";
     }
-  }
-
-  static Future<GenericPageModel> getPageContent(String pageId) async {
-    String aStr = await getPageString(pageId);
-    GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: pageId);
-    return aModel;
   }
 }

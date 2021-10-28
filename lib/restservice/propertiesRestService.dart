@@ -51,11 +51,10 @@ class PropertiesRestService {
       if (aList == null) {
         print("List = null");
         return;
-      } else if (aList.length > 1) {
+        //} else if (aList.length > 1) {
+      } else {
         print("List is not null");
         aMap[aList[0]] = aList[1];
-      } else {
-        print("Fail to load str: " + s);
       }
       //print("Splitting $s into " + aList.length.toString());
     });

@@ -24,7 +24,7 @@ class AppBarComponent {
     List newList = new List<PopupMenuItem>();
     menuItems.forEach((s) {
       print(s["name"] + s["page-id"]);
-      newList.add(new PopupMenuItem(child: s["name"], value: s["page-id"]));
+      newList.add(new PopupMenuItem(child: Text(s["name"]), value: s["page-id"]));
     });
 
     print("items" + newList.length.toString());
@@ -33,7 +33,7 @@ class AppBarComponent {
           items.add(PopupMenuItem(child: s["name"], value: s["page-id"]))
         });
       */
-    return PopupMenuButton(icon: Icon(Icons.more_horiz), itemBuilder: (context) => items
+    return PopupMenuButton(icon: Icon(Icons.more_horiz), itemBuilder: (context) => newList
         /**
       itemBuilder: (context) {
                   return menuItems.map((PopupItem choice) {

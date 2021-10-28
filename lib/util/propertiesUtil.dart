@@ -24,6 +24,22 @@ class PropertiesUtil {
   }
 
   static Map propertiesMap = new Map();
+  static Map strMap = new Map();
+
+  static Future<String> loadStrMap() async {
+    Map strPageIdMap = Map.of(propertiesMap);
+    strPageIdMap.removeWhere((k, v) => v.startsWith('pageid-str-'));
+
+    strPageIdMap.forEach((k, v) async {
+      var lang = k.replaceAll('pageid-str-', '');
+
+      var strMapString = await restService.getSTRFromWPpage(v);
+      print('---' + lang + '---');
+      print(strMapString);
+    });
+
+    return Future.value("Done");
+  }
 
   static Future<String> loadMap() async {
     propertiesMap.addAll(initParamMap);
@@ -41,6 +57,9 @@ class PropertiesUtil {
       pref.setString(k, propertiesMap[k].toString());
       //LocalStorageUtil.saveToStorage(k, propertiesMap[k].toString());
     });
+
+    String s = await loadStrMap();
+
     return Future.value("Done");
     /**
     propertiesMapFromWP.then((m) {

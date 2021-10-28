@@ -38,6 +38,9 @@ class PropertiesRestService {
     LineSplitter ls = new LineSplitter();
     List<String> lines = ls.convert(contentStr);
     print("How many lines:" + lines.length.toString());
+    if (lines.length == 1) {
+      lines = contentStr.split("<br>");
+    }
     Map<String, dynamic> aMap = new Map<String, String>();
     lines.map((s) {
       List<String> aList = StringUtil.split(s, "=", max: 1);

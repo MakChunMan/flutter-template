@@ -45,7 +45,11 @@ class PropertiesRestService {
     Map<String, dynamic> aMap = new Map<String, String>();
 
     lines.forEach((s) {
+      print("====>$s");
       List<String> aList = StringUtil.split(s, "=", max: 1);
+      if (aList == null) {
+        print("List = null");
+      }
       print("Splitting $s into " + aList.length.toString());
       if (aList.length > 1) {
         aMap[aList[0]] = aList[1];

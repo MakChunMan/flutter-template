@@ -18,6 +18,7 @@ class AppBarComponent {
   static PopupMenuButton getPopupMenuButton(List<dynamic> menuItems) {
     //List items = new List();
     if (menuItems == null || menuItems.length == 0) {
+      print("menuItems is null");
       return null;
     }
     List items = menuItems.map((s) {

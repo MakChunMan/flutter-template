@@ -21,6 +21,7 @@ class TestJsonPageState extends State<TestJsonPage> {
     Rendered a = await restService.getMenuFromWPpage();
     setState(() {
       renderedJsonStr = a.menuitems;
+      print("setState: " + a.menuitems.length.toString());
     });
     return a;
   }

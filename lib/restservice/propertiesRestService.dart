@@ -43,7 +43,8 @@ class PropertiesRestService {
     }
     print("How many lines:" + lines.length.toString());
     Map<String, dynamic> aMap = new Map<String, String>();
-    lines.map((s) {
+
+    lines.forEach((s) {
       List<String> aList = StringUtil.split(s, "=", max: 1);
       print("Splitting $s into " + aList.length.toString());
       if (aList.length > 1) {

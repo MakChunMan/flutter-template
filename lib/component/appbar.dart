@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/wppage_menu_model.dart';
 
 class AppBarComponent {
   static AppBar getAppBar(String title, List<dynamic> menuItems) {
@@ -15,7 +16,7 @@ class AppBarComponent {
     );
   }
 
-  static PopupMenuButton getPopupMenuButton(List<dynamic> menuItems) {
+  static PopupMenuButton getPopupMenuButton(List<MenuItem> menuItems) {
     //List items = new List();
     if (menuItems == null || menuItems.length == 0) {
       print("menuItems is null");
@@ -23,7 +24,7 @@ class AppBarComponent {
     }
     List newList = new List<PopupMenuItem>();
     menuItems.forEach((s) {
-      print(s["name"] + s["page-id"]);
+      print(s.name + s.pageid);
       //newList.add(new PopupMenuItem(child: Text(s["name"]), value: s["page-id"]));
     });
 
@@ -33,16 +34,15 @@ class AppBarComponent {
           items.add(PopupMenuItem(child: s["name"], value: s["page-id"]))
         });
       */
-    return PopupMenuButton(icon: Icon(Icons.more_horiz), itemBuilder: (context) => newList
-        /**
-      itemBuilder: (context) {
-                  return menuItems.map((PopupItem choice) {
-                    return PopupMenuItem(
-                      value: choice,
-                      child: Text(choice.name),
-                    );
-                  }).toList();
-                } */
-        );
+    return PopupMenuButton(
+        icon: Icon(Icons.more_horiz), //itemBuilder: (context) => //newList
+        itemBuilder: (context) {
+          return menuItems.map((MenuItem choice) {
+            return PopupMenuItem(
+              value: choice.pageid,
+              child: Text(choice.name),
+            );
+          }).toList();
+        });
   }
 }

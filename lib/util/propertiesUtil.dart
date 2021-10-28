@@ -89,7 +89,8 @@ class PropertiesUtil {
       setLang("zh");
     }
 
-    String s = await loadStrMap();
+    //Load STR into map
+    await loadStrMap();
 
     return Future.value("Done");
     /**

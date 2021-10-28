@@ -36,6 +36,10 @@ class TestJsonPageState extends State<TestJsonPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent.getAppBar("Posts Jason", renderedJsonStr),
+      body: const Center(
+        child: Text('Hello World'),
+      ),
+      /**
       body: FutureBuilder<Rendered>(
         //future: httpService.getWPPage(),
         future: restService.getMenuFromWPpage(),
@@ -47,7 +51,7 @@ class TestJsonPageState extends State<TestJsonPage> {
             return Center(child: CircularProgressIndicator());
           }
         },
-      ),
+      ), */
     );
   }
 }

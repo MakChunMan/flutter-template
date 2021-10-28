@@ -14,11 +14,12 @@ class CommonRestService {
   static Future<GenericPageModel> getPageContent(String pageId) async {
     String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,title,content";
     Response res = await get(Uri.parse(url));
-    print("[PageRestService] - URL:" + url);
+    print("[CommonRestService] - URL:" + url);
     if (res.statusCode == 200) {
       print("Get 200 from pageId:" + pageId);
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
+      print(res.body);
       print("===> Content:" + StringUtil.removeHtmlTag(StringUtil.trim(aStr, 200)) + "...");
 
       GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: map["title"]);

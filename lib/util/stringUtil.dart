@@ -1,6 +1,6 @@
 class StringUtil {
   static List<String> split(String string, String separator, {int max = 0}) {
-    var result;
+    List<String> result = [];
 
     if (separator.isEmpty) {
       result.add(string);

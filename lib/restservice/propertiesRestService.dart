@@ -46,16 +46,18 @@ class PropertiesRestService {
 
     lines.forEach((s) {
       print("====>$s");
-      List<String> aList = StringUtil.split(s, "=", max: 1);
+      List<String> aList = [];
+      aList = StringUtil.split(s, "=", max: 1);
       if (aList == null) {
         print("List = null");
-      }
-      //print("Splitting $s into " + aList.length.toString());
-      if (aList.length > 1) {
+        return;
+      } else if (aList.length > 1) {
+        print("List is not null");
         aMap[aList[0]] = aList[1];
       } else {
         print("Fail to load str: " + s);
       }
+      //print("Splitting $s into " + aList.length.toString());
     });
 
     if (aMap == null) {

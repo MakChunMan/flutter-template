@@ -7,7 +7,7 @@ import '../model/genericPageModel.dart';
 
 class CommonRestService {
   static Future<String> getPageString(String pageId) async {
-    String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,content";
+    String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,title,content";
     Response res = await get(Uri.parse(url));
     print("[PageRestService] - URL:" + url);
     if (res.statusCode == 200) {

@@ -1,4 +1,4 @@
-package com.example.helloworld
+package com.imagworkshop.project.flutter;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

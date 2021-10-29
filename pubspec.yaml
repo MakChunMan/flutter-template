@@ -27,6 +27,8 @@ dependencies:
   http: ^0.12.2
   shared_preferences: ^2.0.7
   flutter_html: ^2.1.5
+  flutlab_logcat:
+    git: https://github.com/CodeGemz/flutlab-logcat.git
 
   
 

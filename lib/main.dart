@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutlab_logcat/flutlab_logcat.dart';
 import 'util/propertiesUtil.dart';
 import 'util/dbUtil.dart';
 import 'testjson.dart';
 import 'dart:async';
 
 Future<void> main() async {
+  //init logging
+  FlutLabLogcat.init();
+
   //Load parameters; TODO: To be replaced
   Future a = PropertiesUtil.loadMap();
   /***

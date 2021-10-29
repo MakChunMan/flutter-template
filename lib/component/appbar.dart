@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/wppage_menu_model.dart';
-import '../page/genericContentPage.dart';
+import '../page/pageFactory.dart';
 
 class AppBarComponent {
   static AppBar getAppBar(BuildContext context, String title, List<dynamic> menuItems) {
@@ -38,7 +38,13 @@ class AppBarComponent {
         onSelected: (result) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => GenericPage(pageId: result)),
+            //MaterialPageRoute(builder: (context) => GenericPage(pageId: result)),
+            MaterialPageRoute(builder: (context) {
+              var paramMap = {
+                'pageId': result
+              };
+              return PageFactory.getPageInstance("generic", paramMap);
+            }),
           );
         },
         itemBuilder: (context) => newList);

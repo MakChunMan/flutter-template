@@ -1,10 +1,10 @@
+library jasonPage;
+
 import 'package:flutter/material.dart';
-import '../util/services.dart';
 import '../restservice/commonRestService.dart';
 import '../component/appbar.dart';
 import '../model/genericPageModel.dart';
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter_html/flutter_html.dart';
 
 class GenericPage extends StatefulWidget {
@@ -20,6 +20,7 @@ class GenericPage extends StatefulWidget {
 class _GenericPageState extends State<GenericPage> {
   //Constructor
   String pageId;
+  String pageTitle;
   _GenericPageState(this.pageId);
 
   //Page Model
@@ -29,12 +30,17 @@ class _GenericPageState extends State<GenericPage> {
   void initState() {
     super.initState();
     futurePage = CommonRestService.getPageContent(pageId);
+    futurePage.then((s) {
+      setState(() {
+        this.pageTitle = s.title;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar(context, "Page ID $pageId", null),
+      appBar: AppBarComponent.getAppBar(context, pageTitle, null),
       body: FutureBuilder<GenericPageModel>(
         future: futurePage,
         builder: (BuildContext context, AsyncSnapshot<GenericPageModel> snapshot) {

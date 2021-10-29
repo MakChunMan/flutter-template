@@ -20,7 +20,7 @@ class GenericPage extends StatefulWidget {
 class _GenericPageState extends State<GenericPage> {
   //Constructor
   String pageId;
-  String pageTitle;
+  String pageTitle = "";
   _GenericPageState(this.pageId);
 
   //Page Model

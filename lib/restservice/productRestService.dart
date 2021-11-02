@@ -30,6 +30,10 @@ class ProductRestService {
             (dynamic item) => ProductCategoryModel.fromJson(item),
           )
           .toList();
+
+      returnList.removeWhere((item) => item == null);
+      returnList.removeWhere((item) => item.name == null);
+      returnList.removeWhere((item) => item.catlink == null);
       return returnList;
     }
   }

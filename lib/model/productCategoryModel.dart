@@ -6,6 +6,7 @@ class ProductCategoryModel {
   final String name;
   final String description;
   final String imagelink;
+  final int imageid;
   final String catlink;
   final int catcount;
 
@@ -14,17 +15,21 @@ class ProductCategoryModel {
     @required this.name,
     @required this.description,
     this.imagelink,
+    this.imageid,
     this.catlink,
     this.catcount,
   });
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
+    var catImage = CategoryImage.fromJson(json["image"]);
+
     return ProductCategoryModel(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
       //imagelink: json['image'].src as String,
-      imagelink: (CategoryImage.fromJson(json["image"])).src,
+      imagelink: catImage.src,
+      imageid: catImage.id,
       //catlink: json['_links']['self'][0] as String,
       //catcount: json['count'] as int,
     );

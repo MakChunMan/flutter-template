@@ -33,7 +33,7 @@ class ProductRestService {
 
       returnList.removeWhere((item) => item == null);
       returnList.removeWhere((item) => item.name == null);
-      returnList.removeWhere((item) => item.catlink == null);
+      returnList.removeWhere((item) => item.imagelink == null);
       return returnList;
     }
   }

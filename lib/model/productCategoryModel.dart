@@ -21,8 +21,9 @@ class ProductCategoryModel {
   });
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
-    var catImage = CategoryImage.fromJson(json["image"]);
-    if (catImage != null) {
+    var catImage;
+    if (json != null) {
+      catImage = CategoryImage.fromJson(json["image"]);
       print("catImage is not null");
       print(catImage.src);
     } else {
@@ -34,8 +35,8 @@ class ProductCategoryModel {
       name: json['name'] as String,
       description: json['description'] as String,
       //imagelink: json['image'].src as String,
-      imagelink: catImage == null ? "" : catImage.src,
-      imageid: catImage == null ? "" : catImage.id,
+      imagelink: (catImage == null) ? "" : catImage.src,
+      imageid: (catImage == null) ? "" : catImage.id,
       //catlink: json['_links']['self'][0] as String,
       //catcount: json['count'] as int,
     );

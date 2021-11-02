@@ -22,7 +22,7 @@ class ProductCategoryModel {
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
     var catImage;
-    if (json != null) {
+    if (json["image"] != null) {
       print("json is not null");
       catImage = CategoryImage.fromJson(json["image"]);
       print("catImage is not null");

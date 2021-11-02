@@ -23,9 +23,17 @@ class ProductRestService {
     if (res.statusCode == 200) {
       print(res.body);
       //Map<String, dynamic> map = jsonDecode(res.body);
-      List<ProductCategoryModel> returnList = jsonDecode(res.body);
+      List<dynamic> body = jsonDecode(res.body);
+
+      List<ProductCategoryModel> returnList = body
+          .map(
+            (dynamic item) => ProductCategoryModel.fromJson(item),
+          )
+          .toList();
+
       //List<ProductCategoryModel> returnList = map.entries.map((e) => ProductCategoryModel.fromJson(jsonDecode(e.value))).toList();
       print(returnList.length.toString());
+      return null;
     }
   }
 

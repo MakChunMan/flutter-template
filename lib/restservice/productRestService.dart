@@ -30,10 +30,8 @@ class ProductRestService {
             (dynamic item) => ProductCategoryModel.fromJson(item),
           )
           .toList();
-
-      //List<ProductCategoryModel> returnList = map.entries.map((e) => ProductCategoryModel.fromJson(jsonDecode(e.value))).toList();
-      print(returnList.length.toString());
-      return null;
+      print(returnList);
+      return returnList;
     }
   }
 

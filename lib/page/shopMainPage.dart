@@ -43,7 +43,16 @@ class _ShopMainPageState extends State<ShopMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent.getAppBar(context, pageTitle, null),
-      body: Text("TEXT"),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: TextFormField(
+              decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

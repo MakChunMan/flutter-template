@@ -37,11 +37,13 @@ class MenuItem {
   final String name;
   final String pageid;
   final int displayorder;
+  final String pagecode;
 
   MenuItem({
     @required this.name,
     @required this.pageid,
     @required this.displayorder,
+    this.pagecode,
   });
 
   factory MenuItem.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ class MenuItem {
       name: json['name'] as String,
       pageid: json['page-id'] as String,
       displayorder: json['display-order'] as int,
+      pagecode: json['page-code'] as String,
     );
   }
 }

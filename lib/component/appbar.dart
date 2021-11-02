@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../util/wppage_menu_model.dart';
+import '../util/stringUtil.dart';
 import '../page/pageFactory.dart';
 
 class AppBarComponent {
@@ -29,7 +30,7 @@ class AppBarComponent {
       print(s.name + s.pageid);
       newList.add(new PopupMenuItem(
         child: Text(s.name),
-        value: s.pageid,
+        value: s.pageid + (s.pagecode == null ? "" : ("-" + s.pagecode)),
       ));
     });
 
@@ -40,10 +41,22 @@ class AppBarComponent {
             context,
             //MaterialPageRoute(builder: (context) => GenericPage(pageId: result)),
             MaterialPageRoute(builder: (context) {
-              var paramMap = {
-                'pageId': result
-              };
-              return PageFactory.getPageInstance("generic", paramMap);
+              var paramMap;
+              List<String> a = StringUtil.split(result, "-", max: 1);
+              if (a.length == 2) {
+                //If it is a type specific page, the format of "result" is "pageid-pagecode"
+                //a[0]: pageid; a[1]: pagecode
+                paramMap = {
+                  'pageId': a[0]
+                };
+                return PageFactory.getPageInstance(a[1], paramMap);
+              } else {
+                paramMap = {
+                  'pageId': result
+                };
+                return PageFactory.getPageInstance("generic", paramMap);
+                ;
+              }
             }),
           );
         },

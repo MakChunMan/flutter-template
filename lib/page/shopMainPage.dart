@@ -105,6 +105,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      /***
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Align(
@@ -116,7 +117,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
                             radius: 14.0,
                           ),
                         ),
-                      ),
+                      ), */
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

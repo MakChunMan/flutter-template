@@ -7,7 +7,9 @@ class PropertiesUtil {
   static Map initParamMap = {
     "app-id": "flutter-template",
     "app-name": "flutter-template 1.0",
-    "apiUrl": "https://flutter-backend.imagworkshop.com/wp-json/wp/v2",
+    "apihost": "https://flutter-backend.imagworkshop.com",
+    "apiUrl": "/wp-json/wp/v2",
+    "apiUrl_wc": "/wp-json/wc/v3",
     "app-version": "0.0.1",
     "pageid-initparam": 57
   };
@@ -16,6 +18,14 @@ class PropertiesUtil {
   static Map strMap = new Map();
 
   static final PropertiesRestService restService = PropertiesRestService();
+
+  static String getWPApiUrl() {
+    return getProp("apihost") + getProp("apiUrl");
+  }
+
+  static String getWCApiUrl() {
+    return getProp("apihost") + getProp("apiUrl_wc");
+  }
 
   static String getProp(String key) {
     if (propertiesMap[key] != null) {

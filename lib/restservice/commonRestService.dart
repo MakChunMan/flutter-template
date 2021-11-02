@@ -12,7 +12,8 @@ class CommonRestService {
   }
 
   static Future<GenericPageModel> getPageContent(String pageId) async {
-    String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,title,content";
+    String url = PropertiesUtil.getWPApiUrl() + "/pages/" + pageId + "?_fields=id,title,content";
+    //String url = PropertiesUtil.getProp("apiUrl") + "/pages/" + pageId + "?_fields=id,title,content";
     Response res = await get(Uri.parse(url));
     print("[CommonRestService] - URL:" + url);
     if (res.statusCode == 200) {

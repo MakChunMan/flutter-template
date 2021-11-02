@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../restservice/commonRestService.dart';
+import '../restservice/productRestService.dart';
 import '../component/appbar.dart';
-import '../model/genericPageModel.dart';
+import '../model/productCategoryModel.dart';
 
 class ShopMainPage extends StatefulWidget {
   ShopMainPage({Key key, this.pageId}) : super(key: key);
@@ -22,19 +22,19 @@ class ShopMainPage extends StatefulWidget {
 class _ShopMainPageState extends State<ShopMainPage> {
   //Constructor
   String pageId;
-  String pageTitle = "";
+  String pageTitle = "Home";
   _ShopMainPageState(this.pageId);
 
   //Page Model
-  Future<GenericPageModel> futurePage;
+  Future<List<ProductCategoryModel>> categoryListFuture;
 
   @override
   void initState() {
     super.initState();
-    futurePage = CommonRestService.getPageContent(pageId);
-    futurePage.then((s) {
+    categoryListFuture = ProductRestService.getCategoryList();
+    categoryListFuture.then((s) {
       setState(() {
-        this.pageTitle = s.title;
+        //this.pageTitle = s.title;
       });
     });
   }
@@ -43,16 +43,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent.getAppBar(context, pageTitle, null),
-      body: FutureBuilder<GenericPageModel>(
-        future: futurePage,
-        builder: (BuildContext context, AsyncSnapshot<GenericPageModel> snapshot) {
-          if (snapshot.hasData) {
-            return Text(this.pageId);
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+      body: Text("TEXT"),
     );
   }
 }

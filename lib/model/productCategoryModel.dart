@@ -30,6 +30,7 @@ class ProductCategoryModel {
     } else {
       print("json is null");
       print("catImage is  null");
+      return null;
     }
 
     return ProductCategoryModel(

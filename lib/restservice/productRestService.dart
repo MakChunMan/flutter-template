@@ -30,7 +30,6 @@ class ProductRestService {
             (dynamic item) => ProductCategoryModel.fromJson(item),
           )
           .toList();
-      print(returnList);
       return returnList;
     }
   }

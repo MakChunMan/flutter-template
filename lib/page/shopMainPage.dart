@@ -106,13 +106,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            item.name,
-                            style: TextStyle(color: Colors.red),
-                          ),
+                          alignment: Alignment.topLeft,
                         ),
                       ),
                       Padding(

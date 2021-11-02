@@ -13,8 +13,9 @@ class ShopMainPage extends StatefulWidget {
   @override
   _ShopMainPageState createState() => _ShopMainPageState(this.pageId);
 
-  static getInstance({Key key, String pageId}) {
-    return new ShopMainPage(key: key, pageId: pageId);
+  //static getInstance({Key key, String pageId}) {
+  static getInstance(Map<String, String> param) {
+    return new ShopMainPage(pageId: param["pageId"].toString());
   }
 }
 

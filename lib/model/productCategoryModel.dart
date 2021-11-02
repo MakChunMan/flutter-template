@@ -22,6 +22,12 @@ class ProductCategoryModel {
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
     var catImage = CategoryImage.fromJson(json["image"]);
+    if (catImage != null) {
+      print("catImage is not null");
+      print(catImage.src);
+    } else {
+      print("catImage is  null");
+    }
 
     return ProductCategoryModel(
       id: json['id'] as int,

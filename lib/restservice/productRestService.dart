@@ -22,8 +22,9 @@ class ProductRestService {
     print("[CommonRestService:getCategoryList] - URL:" + url);
     if (res.statusCode == 200) {
       print(res.body);
-      Map<String, dynamic> map = jsonDecode(res.body);
-      List<ProductCategoryModel> returnList = map.entries.map((e) => ProductCategoryModel.fromJson(jsonDecode(e.value))).toList();
+      //Map<String, dynamic> map = jsonDecode(res.body);
+      List<ProductCategoryModel> returnList = jsonDecode(res.body);
+      //List<ProductCategoryModel> returnList = map.entries.map((e) => ProductCategoryModel.fromJson(jsonDecode(e.value))).toList();
       print(returnList.length.toString());
     }
   }

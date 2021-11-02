@@ -19,12 +19,12 @@ class ProductCategoryModel {
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
     return ProductCategoryModel(
-      id: json['id'].toString as String,
+      id: json['id'].toString() as String,
       name: json['name'] as String,
       description: json['description'] as String,
       imagelink: json['image']['src'] as String,
-      catlink: json['_links']['self'][0] as String,
-      catcount: json['count'] as int,
+      //catlink: json['_links']['self'][0] as String,
+      //catcount: json['count'] as int,
     );
   }
 }

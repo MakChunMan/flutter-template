@@ -105,19 +105,16 @@ class _ShopMainPageState extends State<ShopMainPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      /***
                       Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Align(
-                          alignment: Alignment.topLeft,
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              'https://iisy.fi/wp-content/uploads/2018/08/user-profile-male-logo.jpg',
-                            ),
-                            radius: 14.0,
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                            item.name,
+                            style: TextStyle(color: Colors.red),
                           ),
                         ),
-                      ), */
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

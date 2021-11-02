@@ -80,16 +80,18 @@ class _ShopMainPageState extends State<ShopMainPage> {
             padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
             child: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    item.catlink,
-                  ),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                    Colors.black26,
-                    BlendMode.darken,
-                  ),
-                ),
+                image: (item.catlink == null)
+                    ? null
+                    : DecorationImage(
+                        image: NetworkImage(
+                          item.catlink,
+                        ),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black26,
+                          BlendMode.darken,
+                        ),
+                      ),
                 borderRadius: BorderRadius.circular(10.0),
                 color: Colors.grey,
               ),

@@ -38,7 +38,7 @@ class ProductCategoryModel {
       description: json['description'] as String,
       //imagelink: json['image'].src as String,
       imagelink: (catImage == null) ? "" : catImage.src,
-      imageid: (catImage == null) ? "" : catImage.id,
+      imageid: (catImage == null) ? null : catImage.id,
       //catlink: json['_links']['self'][0] as String,
       //catcount: json['count'] as int,
     );

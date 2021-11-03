@@ -29,13 +29,6 @@ class _MainPageState extends State<MainPage> {
         this._categoryList = s;
       });
     }); */
-
-    _controller.addListener(() {
-      if (_controller.position.pixels <= 56)
-        setState(() => _physics = ClampingScrollPhysics());
-      else
-        setState(() => _physics = BouncingScrollPhysics());
-    });
   }
 
   @override
@@ -165,9 +158,8 @@ class _MainPageState extends State<MainPage> {
     children: <Widget>[
       Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Text(
-          "Search Bar here",
-          style: TextStyle(color: Colors.blue),
+        child: TextFormField(
+          decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
         ),
       ),
       Padding(

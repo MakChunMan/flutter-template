@@ -109,6 +109,7 @@ class _MainPageState extends State<MainPage> {
   void _retrieveIcons() {
     Future.delayed(Duration(milliseconds: 200)).then((e) {
       setState(() {
+        print("setState");
         _icons.addAll([
           Icons.ac_unit,
           Icons.airport_shuttle,

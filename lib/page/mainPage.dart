@@ -88,7 +88,15 @@ class _MainPageState extends State<MainPage> {
     ]);
   }
 
-  List<IconData> _icons = [];
+  List<IconData> _icons = [
+    Icons.ac_unit,
+    Icons.airport_shuttle,
+    Icons.all_inclusive,
+    Icons.beach_access,
+    Icons.cake,
+    Icons.free_breakfast,
+  ];
+
   GridView getButtonGridView() {
     return GridView.builder(
       shrinkWrap: true,
@@ -98,28 +106,9 @@ class _MainPageState extends State<MainPage> {
       ),
       itemCount: _icons.length,
       itemBuilder: (context, index) {
-        //if (index == _icons.length - 1 && _icons.length < 8) {
-        _retrieveIcons();
-        //}
         return Icon(_icons[index]);
       },
     );
-  }
-
-  void _retrieveIcons() {
-    Future.delayed(Duration(milliseconds: 200)).then((e) {
-      setState(() {
-        print("setState");
-        _icons.addAll([
-          Icons.ac_unit,
-          Icons.airport_shuttle,
-          Icons.all_inclusive,
-          Icons.beach_access,
-          Icons.cake,
-          Icons.free_breakfast,
-        ]);
-      });
-    });
   }
 
   Column topLayerContainer = Column(

@@ -58,7 +58,11 @@ class _MainPageState extends State<MainPage> {
             height: 150.0,
             child: _SliderList(),
           ),
-          _ButtonGrid(),
+          SizedBox(
+            height: 300.0,
+            child: _ButtonGrid(),
+          ),
+
           //_SliderList(),
         ],
       ),

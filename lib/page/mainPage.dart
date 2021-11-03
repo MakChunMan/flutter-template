@@ -98,9 +98,9 @@ class _MainPageState extends State<MainPage> {
       ),
       itemCount: _icons.length,
       itemBuilder: (context, index) {
-        if (index == _icons.length - 1 && _icons.length < 8) {
-          _retrieveIcons();
-        }
+        //if (index == _icons.length - 1 && _icons.length < 8) {
+        _retrieveIcons();
+        //}
         return Icon(_icons[index]);
       },
     );

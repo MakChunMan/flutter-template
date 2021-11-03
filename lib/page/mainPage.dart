@@ -55,17 +55,10 @@ class _MainPageState extends State<MainPage> {
             style: TextStyle(fontSize: 18),
           ),
           SizedBox(
-            height: 200.0,
-            child: ListView.builder(
-              physics: ClampingScrollPhysics(),
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: 15,
-              itemBuilder: (BuildContext context, int index) => Card(
-                child: Center(child: Text('Dummy Card Text')),
-              ),
-            ),
+            height: 150.0,
+            child: _SliderList(),
           ),
+          _ButtonGrid(),
           //_SliderList(),
         ],
       ),
@@ -74,33 +67,32 @@ class _MainPageState extends State<MainPage> {
 
   //Main Content 1: Slider
   ListView _SliderList() {
-    return ListView(
-      // This next line does the trick.
-      scrollDirection: Axis.horizontal,
-      shrinkWrap: true,
-      children: <Widget>[
-        Container(
-          width: 160.0,
-          color: Colors.red,
-        ),
-        Container(
-          width: 160.0,
-          color: Colors.blue,
-        ),
-        Container(
-          width: 160.0,
-          color: Colors.green,
-        ),
-        Container(
-          width: 160.0,
-          color: Colors.yellow,
-        ),
-        Container(
-          width: 160.0,
-          color: Colors.orange,
-        ),
-      ],
-    );
+    return ListView.builder(
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: 15,
+        itemBuilder: (BuildContext context, int index) => Card(
+              child: Center(child: Text('Dummy Card Text')),
+            ));
+  }
+
+  //Main Cotent 2: Button Grid
+  Column _ButtonGrid() {
+    return Column(children: <Widget>[
+      Text(
+        'Button Grid',
+        style: TextStyle(fontSize: 18),
+      ),
+      GridView(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, childAspectRatio: 1.0), children: <Widget>[
+        Icon(Icons.ac_unit),
+        Icon(Icons.airport_shuttle),
+        Icon(Icons.all_inclusive),
+        Icon(Icons.beach_access),
+        Icon(Icons.cake),
+        Icon(Icons.free_breakfast)
+      ]),
+    ]);
   }
 
   Column topLayerContainer = Column(

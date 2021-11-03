@@ -54,35 +54,34 @@ class _MainPageState extends State<MainPage> {
 
   final _controller = ScrollController();
 
-  SingleChildScrollView bottomLayerContainer() {
-    return SingleChildScrollView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        child: ScrollConfiguration(
-          behavior: MousePointScrollBehavior(),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Headline',
-                style: TextStyle(fontSize: 18),
-              ),
-              _Slider2(),
-              SizedBox(
-                height: 150.0,
-                child: _SliderList(),
-              ),
-              _ButtonGrid(),
-              //_SliderList(),
-              SizedBox(
-                height: 150.0,
-                child: _SliderList(),
-              ),
-              SizedBox(
-                height: 150.0,
-                child: _SliderList(),
-              ),
-            ],
+  ScrollConfiguration bottomLayerContainer() {
+    return ScrollConfiguration(
+      behavior: MousePointScrollBehavior(),
+      child: ListView(
+        controller: _controller,
+        children: <Widget>[
+          Text(
+            'Headline',
+            style: TextStyle(fontSize: 18),
           ),
-        ));
+          _Slider2(),
+          SizedBox(
+            height: 150.0,
+            child: _SliderList(),
+          ),
+          _ButtonGrid(),
+          //_SliderList(),
+          SizedBox(
+            height: 150.0,
+            child: _SliderList(),
+          ),
+          SizedBox(
+            height: 150.0,
+            child: _SliderList(),
+          ),
+        ],
+      ),
+    );
   }
 
   //Main Content 1: Slider

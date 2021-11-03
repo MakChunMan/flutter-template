@@ -160,11 +160,23 @@ class _MainPageState extends State<MainPage> {
       ),
       itemCount: _icons.length,
       itemBuilder: (context, index) {
-        return IconButton(
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+                icon: Icon(_icons[index]),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            Text("Button"),
+          ],
+        );
+        /**return IconButton(
             icon: Icon(_icons[index]),
             onPressed: () {
               Navigator.pop(context);
-            });
+            });**/
         //return Icon(_icons[index]);
       },
     );

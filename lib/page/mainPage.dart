@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
         body: Stack(
       children: <Widget>[
         //Stack children 1 (bottom layer: main page content)
-        bottomLayerContainer,
+        bottomLayerContainer(),
         //Stack children 2 (top layer: search bar and bottom tools)
         topLayerContainer,
       ],
@@ -44,43 +44,47 @@ class _MainPageState extends State<MainPage> {
   }
 
   final _controller = ScrollController();
-  SingleChildScrollView bottomLayerContainer = SingleChildScrollView(
-      child: ScrollConfiguration(
-    behavior: MousePointScrollBehavior(),
-    child: Column(
-      children: <Widget>[
-        _SliderList,
-      ],
-    ),
-  ));
+  SingleChildScrollView bottomLayerContainer() {
+    return SingleChildScrollView(
+        child: ScrollConfiguration(
+      behavior: MousePointScrollBehavior(),
+      child: Column(
+        children: <Widget>[
+          _SliderList(),
+        ],
+      ),
+    ));
+  }
 
   //Main Content 1: Slider
-  ListView _SliderList = ListView(
-    // This next line does the trick.
-    scrollDirection: Axis.horizontal,
-    children: <Widget>[
-      Container(
-        width: 160.0,
-        color: Colors.red,
-      ),
-      Container(
-        width: 160.0,
-        color: Colors.blue,
-      ),
-      Container(
-        width: 160.0,
-        color: Colors.green,
-      ),
-      Container(
-        width: 160.0,
-        color: Colors.yellow,
-      ),
-      Container(
-        width: 160.0,
-        color: Colors.orange,
-      ),
-    ],
-  );
+  ListView _SliderList() {
+    return ListView(
+      // This next line does the trick.
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        Container(
+          width: 160.0,
+          color: Colors.red,
+        ),
+        Container(
+          width: 160.0,
+          color: Colors.blue,
+        ),
+        Container(
+          width: 160.0,
+          color: Colors.green,
+        ),
+        Container(
+          width: 160.0,
+          color: Colors.yellow,
+        ),
+        Container(
+          width: 160.0,
+          color: Colors.orange,
+        ),
+      ],
+    );
+  }
 
   Column topLayerContainer = Column(
     crossAxisAlignment: CrossAxisAlignment.start,

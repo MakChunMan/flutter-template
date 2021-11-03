@@ -164,9 +164,9 @@ class _MainPageState extends State<MainPage> {
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(
-          "Bottom tool bar here",
-          style: TextStyle(color: Colors.red),
+        child: DecoratedBox(
+          decoration: const BoxDecoration(color: Colors.grey),
+          child: Text('Bottom tool bar here', style: TextStyle(color: Colors.red)),
         ),
       )
     ],

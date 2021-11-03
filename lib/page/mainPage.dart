@@ -169,7 +169,7 @@ class _MainPageState extends State<MainPage> {
       ),
       Container(
         width: double.infinity,
-        height: 16.0,
+        height: 64.0,
         alignment: Alignment.center,
         color: Colors.grey,
         child: DecoratedBox(

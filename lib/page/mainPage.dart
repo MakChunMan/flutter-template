@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
   List<IconData> _icons = [];
   GridView getButtonGridView() {
     return GridView.builder(
-      shrinkWrap: false,
+      shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         childAspectRatio: 1.0,

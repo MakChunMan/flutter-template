@@ -162,13 +162,14 @@ class _MainPageState extends State<MainPage> {
           decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
+      Container(
+        width: double.infinity,
+        alignment: Alignment.center,
         child: DecoratedBox(
           decoration: const BoxDecoration(color: Colors.grey),
           child: Text('Bottom tool bar here', style: TextStyle(color: Colors.red)),
         ),
-      )
+      ),
     ],
   );
 }

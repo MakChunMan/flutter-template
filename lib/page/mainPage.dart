@@ -58,6 +58,7 @@ class _MainPageState extends State<MainPage> {
     return ScrollConfiguration(
       behavior: MousePointScrollBehavior(),
       child: ListView(
+        physics: BouncingScrollPhysics(),
         controller: _controller,
         children: <Widget>[
           Text(

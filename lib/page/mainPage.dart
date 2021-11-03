@@ -48,14 +48,15 @@ class _MainPageState extends State<MainPage> {
     children: <Widget>[
       Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Align(
-          alignment: Alignment.topLeft,
+        child: Text(
+          "Search Bar here",
+          style: TextStyle(color: Colors.blue),
         ),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          "TEST TEST",
+          "Bottom tool bar here",
           style: TextStyle(color: Colors.red),
         ),
       )

@@ -161,8 +161,8 @@ class _MainPageState extends State<MainPage> {
       itemCount: _icons.length,
       itemBuilder: (context, index) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             IconButton(
                 icon: Icon(_icons[index]),

@@ -50,7 +50,23 @@ class _MainPageState extends State<MainPage> {
       behavior: MousePointScrollBehavior(),
       child: Column(
         children: <Widget>[
-          _SliderList(),
+          Text(
+            'Headline',
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 200.0,
+            child: ListView.builder(
+              physics: ClampingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: 15,
+              itemBuilder: (BuildContext context, int index) => Card(
+                child: Center(child: Text('Dummy Card Text')),
+              ),
+            ),
+          ),
+          //_SliderList(),
         ],
       ),
     ));

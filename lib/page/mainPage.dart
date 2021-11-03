@@ -31,9 +31,9 @@ class _MainPageState extends State<MainPage> {
     _controller.addListener(() {
       if (_controller.position.pixels <= 20)
         setState(() => this._searchHeaderBgColor = null);
-      else if (_controller.position.pixels <= 56)
-        setState(() => this._searchHeaderBgColor = Colors.black26.withAlpha((_controller.position.pixels - 20 / 100 * 255).ceil()));
-      else
+      else if (_controller.position.pixels <= 56) {
+        setState(() => this._searchHeaderBgColor = Colors.black26.withAlpha(((_controller.position.pixels - 20) / 36 / 100 * 255).ceil()));
+      } else
         setState(() => this._searchHeaderBgColor = Colors.black26);
     });
   }

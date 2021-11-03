@@ -165,6 +165,7 @@ class _MainPageState extends State<MainPage> {
       Container(
         width: double.infinity,
         alignment: Alignment.center,
+        padding: const EdgeInsets.all(16.0),
         child: DecoratedBox(
           decoration: const BoxDecoration(color: Colors.grey),
           child: Text('Bottom tool bar here', style: TextStyle(color: Colors.red)),

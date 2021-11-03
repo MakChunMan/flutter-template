@@ -55,7 +55,7 @@ class _MainPageState extends State<MainPage> {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           "TEST TEST",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.red),
         ),
       )
     ],

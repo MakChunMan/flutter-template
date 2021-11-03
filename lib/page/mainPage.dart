@@ -56,8 +56,7 @@ class _MainPageState extends State<MainPage> {
 
   SingleChildScrollView bottomLayerContainer() {
     return SingleChildScrollView(
-        controller: _controller,
-        physics: _physics,
+        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: ScrollConfiguration(
           behavior: MousePointScrollBehavior(),
           child: Column(

@@ -16,6 +16,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  ScrollPhysics _physics = ClampingScrollPhysics();
+
   @override
   void initState() {
     super.initState();
@@ -27,6 +29,13 @@ class _MainPageState extends State<MainPage> {
         this._categoryList = s;
       });
     }); */
+
+    _controller.addListener(() {
+      if (_controller.position.pixels <= 56)
+        setState(() => _physics = ClampingScrollPhysics());
+      else
+        setState(() => _physics = BouncingScrollPhysics());
+    });
   }
 
   @override
@@ -44,34 +53,37 @@ class _MainPageState extends State<MainPage> {
   }
 
   final _controller = ScrollController();
+
   SingleChildScrollView bottomLayerContainer() {
     return SingleChildScrollView(
+        controller: _controller,
+        physics: _physics,
         child: ScrollConfiguration(
-      behavior: MousePointScrollBehavior(),
-      child: Column(
-        children: <Widget>[
-          Text(
-            'Headline',
-            style: TextStyle(fontSize: 18),
+          behavior: MousePointScrollBehavior(),
+          child: Column(
+            children: <Widget>[
+              Text(
+                'Headline',
+                style: TextStyle(fontSize: 18),
+              ),
+              _Slider2(),
+              SizedBox(
+                height: 150.0,
+                child: _SliderList(),
+              ),
+              _ButtonGrid(),
+              //_SliderList(),
+              SizedBox(
+                height: 150.0,
+                child: _SliderList(),
+              ),
+              SizedBox(
+                height: 150.0,
+                child: _SliderList(),
+              ),
+            ],
           ),
-          _Slider2(),
-          SizedBox(
-            height: 150.0,
-            child: _SliderList(),
-          ),
-          _ButtonGrid(),
-          //_SliderList(),
-          SizedBox(
-            height: 150.0,
-            child: _SliderList(),
-          ),
-          SizedBox(
-            height: 150.0,
-            child: _SliderList(),
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 
   //Main Content 1: Slider

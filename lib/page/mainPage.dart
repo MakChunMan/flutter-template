@@ -78,7 +78,7 @@ class _MainPageState extends State<MainPage> {
   //Top header + spacer
   Padding _TopHeader() {
     return Padding(
-      padding: const EdgeInsets.all(320),
+      padding: const EdgeInsets.all(32),
       child: Text("Headline"),
     );
   }

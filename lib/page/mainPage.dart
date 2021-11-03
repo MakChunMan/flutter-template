@@ -61,6 +61,7 @@ class _MainPageState extends State<MainPage> {
     return ListView(
       // This next line does the trick.
       scrollDirection: Axis.horizontal,
+      shrinkWrap: true,
       children: <Widget>[
         Container(
           width: 160.0,

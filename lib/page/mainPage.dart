@@ -16,8 +16,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  ScrollPhysics _physics = ClampingScrollPhysics();
-
   @override
   void initState() {
     super.initState();
@@ -29,6 +27,13 @@ class _MainPageState extends State<MainPage> {
         this._categoryList = s;
       });
     }); */
+    this._searchHeaderBgColor = null;
+    _controller.addListener(() {
+      if (_controller.position.pixels <= 56)
+        setState(() => this._searchHeaderBgColor = Colors.black26);
+      else
+        setState(() => this._searchHeaderBgColor = null);
+    });
   }
 
   @override
@@ -40,18 +45,19 @@ class _MainPageState extends State<MainPage> {
         //Stack children 1 (bottom layer: main page content)
         bottomLayerContainer(),
         //Stack children 2 (top layer: search bar and bottom tools)
-        topLayerContainer,
+        topLayerContainer(),
       ],
     ));
   }
 
   final _controller = ScrollController();
+  Color _searchHeaderBgColor;
 
   ScrollConfiguration bottomLayerContainer() {
     return ScrollConfiguration(
       behavior: MousePointScrollBehavior(),
       child: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: ClampingScrollPhysics(),
         controller: _controller,
         children: <Widget>[
           _TopHeader(),
@@ -157,26 +163,31 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  Column topLayerContainer = Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: TextFormField(
-          decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+  Column topLayerContainer() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          color: _searchHeaderBgColor,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: TextFormField(
+              decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+            ),
+          ),
         ),
-      ),
-      Container(
-        width: double.infinity,
-        height: 64.0,
-        alignment: Alignment.center,
-        color: Colors.grey,
-        child: DecoratedBox(
-          decoration: const BoxDecoration(color: Colors.grey),
-          child: Text('Bottom tool bar here', style: TextStyle(color: Colors.red)),
+        Container(
+          width: double.infinity,
+          height: 50.0,
+          alignment: Alignment.center,
+          color: Colors.grey,
+          child: DecoratedBox(
+            decoration: const BoxDecoration(color: Colors.grey),
+            child: Text('Bottom tool bar here', style: TextStyle(color: Colors.red)),
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
 }

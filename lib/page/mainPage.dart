@@ -54,10 +54,7 @@ class _MainPageState extends State<MainPage> {
         physics: BouncingScrollPhysics(),
         controller: _controller,
         children: <Widget>[
-          Text(
-            'Headline',
-            style: TextStyle(fontSize: 18),
-          ),
+          _TopHeader(),
           _Slider2(),
           SizedBox(
             height: 150.0,
@@ -75,6 +72,14 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
+    );
+  }
+
+  //Top header + spacer
+  Padding _TopHeader() {
+    return Padding(
+      padding: const EdgeInsets.all(320),
+      child: Text("Headline"),
     );
   }
 
@@ -164,6 +169,7 @@ class _MainPageState extends State<MainPage> {
       ),
       Container(
         width: double.infinity,
+        height: 16.0,
         alignment: Alignment.center,
         color: Colors.grey,
         child: DecoratedBox(

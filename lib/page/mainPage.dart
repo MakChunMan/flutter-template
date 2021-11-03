@@ -58,11 +58,7 @@ class _MainPageState extends State<MainPage> {
             height: 150.0,
             child: _SliderList(),
           ),
-          SizedBox(
-            height: 300.0,
-            child: _ButtonGrid(),
-          ),
-
+          _ButtonGrid(),
           //_SliderList(),
         ],
       ),
@@ -95,13 +91,14 @@ class _MainPageState extends State<MainPage> {
   List<IconData> _icons = [];
   GridView getButtonGridView() {
     return GridView.builder(
+      shrinkWrap: false,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 4,
         childAspectRatio: 1.0,
       ),
       itemCount: _icons.length,
       itemBuilder: (context, index) {
-        if (index == _icons.length - 1 && _icons.length < 200) {
+        if (index == _icons.length - 1 && _icons.length < 8) {
           _retrieveIcons();
         }
         return Icon(_icons[index]);

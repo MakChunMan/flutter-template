@@ -6,6 +6,7 @@ class PageFactory {
   static Map<String, Function> PageInstanceMap = {
     //"productcat": ProductCategoryPage.getInstance,
     "shopmain": ShopMainPage.getInstance,
+    "main": MainPage.getInstance,
   };
 
   static dynamic getPageInstance(String classname, Map<String, dynamic> param) {

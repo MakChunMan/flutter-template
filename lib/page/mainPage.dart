@@ -32,7 +32,6 @@ class _MainPageState extends State<MainPage> {
       if (_controller.position.pixels <= 20)
         setState(() => this._searchHeaderBgColor = null);
       else if (_controller.position.pixels <= 56) {
-        print(((_controller.position.pixels - 20) / 36 / 100 * 255).ceil().toString());
         setState(() => this._searchHeaderBgColor = Colors.black.withAlpha(((_controller.position.pixels - 20) / 36 * 255 * 0.26).ceil()));
       } else
         setState(() => this._searchHeaderBgColor = Colors.black26);
@@ -95,7 +94,7 @@ class _MainPageState extends State<MainPage> {
   //Main Content 1: Slider
   ListView _SliderList() {
     return ListView.builder(
-        physics: ClampingScrollPhysics(),
+        physics: BouncingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 15,
@@ -161,7 +160,12 @@ class _MainPageState extends State<MainPage> {
       ),
       itemCount: _icons.length,
       itemBuilder: (context, index) {
-        return Icon(_icons[index]);
+        return IconButton(
+            icon: Icon(_icons[index]),
+            onPressed: () {
+              Navigator.pop(context);
+            });
+        //return Icon(_icons[index]);
       },
     );
   }

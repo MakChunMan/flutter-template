@@ -10,7 +10,7 @@ class ProductRestService {
   static Map<String, String> getWCAuthHeader() {
     String a = "ck_a76f4a8e9321f6fc7ebf8238e144b4962b46393c:cs_b42f7ef40ff17cd4ff4ce51e921717457a8d61ef";
     String b = base64.encode(utf8.encode(a));
-    print(b);
+    //print(b);
     return {
       "Authorization": "Basic " + b
     };
@@ -29,6 +29,8 @@ class ProductRestService {
           )
           .toList();
       return returnList;
+    } else {
+      return null;
     }
   }
 

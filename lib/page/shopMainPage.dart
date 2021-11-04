@@ -221,11 +221,29 @@ class _ShopMainPageState extends State<ShopMainPage> {
             ),
           ),
           Text(pm.name),
+          addToCart(pm),
         ],
       ),
       /**child: Container(
           child: Text(pm.name),
         ));**/
+    );
+  }
+
+  Widget addToCart(ProductModel pm) {
+    return Container(
+      height: 150.0,
+      width: 300.0,
+      color: Colors.transparent,
+      child: Container(
+          decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          child: new Center(
+            child: new Text(
+              "Rounded Corner Rectangle Shape",
+              style: TextStyle(color: Colors.white, fontSize: 22),
+              textAlign: TextAlign.center,
+            ),
+          )),
     );
   }
 }

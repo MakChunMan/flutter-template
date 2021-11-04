@@ -36,7 +36,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
   List<ProductModel> _productListByCategory = null;
 
   //MemoryStorage
-  Map<int, List<ProductModel>> _cacheProductListByCategoryId;
+  Map<int, List<ProductModel>> _cacheProductListByCategoryId = new Map<int, List<ProductModel>>();
 
   @override
   void initState() {

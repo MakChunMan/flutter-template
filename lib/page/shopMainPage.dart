@@ -147,6 +147,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
     setState(() {
       //this.pageTitle = s.title;
       this._currentCategory = item;
+      this._productListByCategory = null;
     });
 
     //Check cache

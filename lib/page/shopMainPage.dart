@@ -234,15 +234,15 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 70.0,
-      width: 100.0,
+      height: 60.0,
+      width: 150.0,
       color: Colors.transparent,
       child: Container(
           decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10.0))),
           child: new Center(
             child: new Text(
               "Rounded Corner Rectangle Shape",
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 12),
               textAlign: TextAlign.center,
             ),
           )),

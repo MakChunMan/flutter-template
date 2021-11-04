@@ -63,6 +63,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
             child: ListView(
               children: <Widget>[
                 _categoryListView(),
+                listOfProductForSpecificCat(),
                 //_buildCardListView(),
                 //_buildRequestListView(),
               ],

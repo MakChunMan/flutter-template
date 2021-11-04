@@ -14,7 +14,7 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     List<String> imagelinks = [];
-    if (json["image"] != null) {
+    if (json["images"] != null) {
       print("json is not null");
       List listOfImage = json['images'];
       if (listOfImage != null && listOfImage.length > 0) {

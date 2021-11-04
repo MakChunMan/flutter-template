@@ -157,15 +157,21 @@ class _ShopMainPageState extends State<ShopMainPage> {
   Widget listOfProductForSpecificCat() {
     if (_productListByCategory == null) {
       return Text("");
+    } else if (_productListByCategory.length == 0) {
+      return Text("");
     }
+    print("Length:" + this._productListByCategory.length.toString());
     return new Column(
       children: new List.generate(this._productListByCategory.length, (index) {
         var item = _productListByCategory[index];
-        return GestureDetector(
-            onTap: () {},
-            child: Container(
-              child: Text(item.name),
-            ));
+        if (item == null)
+          return null;
+        else
+          return GestureDetector(
+              onTap: () {},
+              child: Container(
+                child: Text(item.name),
+              ));
       }).toList(),
     );
     /**

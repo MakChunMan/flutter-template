@@ -156,7 +156,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   ListView listOfProductForSpecificCat() {
     if (_productListByCategory == null) {
-      return null;
+      return ListView();
     }
     return ListView.builder(
         scrollDirection: Axis.vertical,

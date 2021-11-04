@@ -222,7 +222,12 @@ class _ShopMainPageState extends State<ShopMainPage> {
           ),
           Column(children: [
             Text(pm.name),
-            addToCart(pm),
+            Row(
+              children: [
+                Text("Price: 1.00"),
+                addToCart(pm),
+              ],
+            )
           ]),
         ],
       ),
@@ -234,18 +239,23 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 60.0,
+      height: 50.0,
       width: 150.0,
       color: Colors.transparent,
       child: Container(
           decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10.0))),
           child: new Center(
-            child: new Text(
-              "Rounded Corner Rectangle Shape",
-              style: TextStyle(color: Colors.white, fontSize: 12),
-              textAlign: TextAlign.center,
-            ),
-          )),
+              child: new Row(
+            children: [
+              Text("-"),
+              Text(
+                "12",
+                style: TextStyle(color: Colors.white, fontSize: 12),
+                textAlign: TextAlign.center,
+              ),
+              Text("+"),
+            ],
+          ))),
     );
   }
 }

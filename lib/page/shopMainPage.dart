@@ -54,25 +54,28 @@ class _ShopMainPageState extends State<ShopMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent.getAppBar(context, pageTitle, null),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: TextFormField(
-              decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+      body: ScrollConfiguration(
+        behavior: MousePointScrollBehavior(),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: TextFormField(
+                decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              children: <Widget>[
-                _categoryListView(),
-                listOfProductForSpecificCat(),
-                //_buildCardListView(),
-                //_buildRequestListView(),
-              ],
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  _categoryListView(),
+                  listOfProductForSpecificCat(),
+                  //_buildCardListView(),
+                  //_buildRequestListView(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -83,62 +86,59 @@ class _ShopMainPageState extends State<ShopMainPage> {
   SizedBox _categoryListView() {
     return SizedBox(
       height: 150.0,
-      child: ScrollConfiguration(
-        behavior: MousePointScrollBehavior(),
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: _categoryList.length,
-            itemExtent: 100.0,
-            controller: _controller,
-            itemBuilder: (BuildContext context, int index) {
-              var item = _categoryList[index];
-              return GestureDetector(
-                onTap: () {
-                  topCategoryListOnClick(item, index);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: (item == null || item.imagelink == null)
-                          ? null
-                          : DecorationImage(
-                              image: NetworkImage(
-                                item.imagelink,
-                              ),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Colors.black26,
-                                BlendMode.darken,
-                              ),
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _categoryList.length,
+          itemExtent: 100.0,
+          controller: _controller,
+          itemBuilder: (BuildContext context, int index) {
+            var item = _categoryList[index];
+            return GestureDetector(
+              onTap: () {
+                topCategoryListOnClick(item, index);
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: (item == null || item.imagelink == null)
+                        ? null
+                        : DecorationImage(
+                            image: NetworkImage(
+                              item.imagelink,
                             ),
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.grey,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Align(
-                            alignment: Alignment.topLeft,
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Colors.black26,
+                              BlendMode.darken,
+                            ),
                           ),
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Colors.grey,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            item.name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              );
-            }),
-      ),
+              ),
+            );
+          }),
     );
   }
 
@@ -203,7 +203,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
     return GestureDetector(
       onTap: () {},
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
             height: 120.0,
@@ -218,7 +219,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
               shape: BoxShape.circle,
             ),
           ),
-          Text("pm.name"),
+          Text(pm.name),
         ],
       ),
       /**child: Container(

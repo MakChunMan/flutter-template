@@ -182,11 +182,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         if (item == null)
           return Text("NULL for item");
         else
-          return GestureDetector(
-              onTap: () {},
-              child: Container(
-                child: Text(item.name),
-              ));
+          return productItem(item);
       }).toList());
     }
     //print("Length:" + this._productListByCategory.length.toString());

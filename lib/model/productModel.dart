@@ -19,7 +19,7 @@ class ProductModel {
       List listOfImage = json['images'];
       if (listOfImage != null && listOfImage.length > 0) {
         for (int i = 0; i < listOfImage.length; i++) {
-          imagelinks[i] = ProductImage.fromJson(listOfImage[0]).src;
+          imagelinks[i] = ProductImage.fromJson(listOfImage[i]).src;
         }
       }
     } else {

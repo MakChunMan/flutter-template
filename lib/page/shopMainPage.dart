@@ -220,8 +220,10 @@ class _ShopMainPageState extends State<ShopMainPage> {
               shape: BoxShape.circle,
             ),
           ),
-          Text(pm.name),
-          addToCart(pm),
+          Column(children: [
+            Text(pm.name),
+            addToCart(pm),
+          ]),
         ],
       ),
       /**child: Container(
@@ -232,8 +234,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 150.0,
-      width: 300.0,
+      height: 70.0,
+      width: 100.0,
       color: Colors.transparent,
       child: Container(
           decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10.0))),

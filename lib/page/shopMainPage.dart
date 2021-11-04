@@ -210,6 +210,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
             height: 120.0,
             width: 120.0,
             decoration: BoxDecoration(
+              color: Colors.black12,
               image: DecorationImage(
                 image: NetworkImage(
                   pm.imagelink[0],

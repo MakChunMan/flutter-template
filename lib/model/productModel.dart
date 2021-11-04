@@ -6,8 +6,8 @@ class ProductModel {
   final String name;
   final String description;
   final String shortDescription;
-  final String price;
-  final String regularPrice;
+  final double price;
+  final double regularPrice;
   final List<String> imagelink;
 
   ProductModel({@required this.id, @required this.name, @required this.description, this.shortDescription, this.price, this.regularPrice, this.imagelink});
@@ -38,8 +38,8 @@ class ProductModel {
       name: json['name'] as String,
       description: json['description'] as String,
       shortDescription: json['short_description'] as String,
-      price: json['price'] as String,
-      regularPrice: json['regular_price'] as String,
+      price: json['price'] as double,
+      regularPrice: json['regular_price'] as double,
       imagelink: imagelinks,
     );
   }

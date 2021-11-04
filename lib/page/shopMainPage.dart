@@ -70,6 +70,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   final _controller = ScrollController();
 
+  //Top horizontal category list
   SizedBox _categoryListView() {
     return SizedBox(
       height: 150.0,
@@ -84,7 +85,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
               var item = _categoryList[index];
               return GestureDetector(
                 onTap: () {
-                  Navigator.pop(context);
+                  topCategoryListOnClick(item, index);
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
@@ -131,4 +132,10 @@ class _ShopMainPageState extends State<ShopMainPage> {
       ),
     );
   }
+
+  void topCategoryListOnClick(ProductCategoryModel item, int index) {
+    print(item.name + "; index:" + index);
+  }
+
+  ListView listOfProductForSpecificCat() {}
 }

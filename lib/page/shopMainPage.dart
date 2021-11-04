@@ -168,27 +168,28 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   Widget listOfProductForSpecificCat() {
+    List<Widget> widgetsInColumn = [
+      categoryTitleText(this._currentCategory.name)
+    ];
     if (_productListByCategory == null) {
-      return Text("");
+      //return Text("");
     } else if (_productListByCategory.length == 0) {
-      return Text("");
+      //return Text("");
+    } else {
+      widgetsInColumn.addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
+        var item = _productListByCategory[index];
+        if (item == null)
+          return Text("NULL for item");
+        else
+          return GestureDetector(
+              onTap: () {},
+              child: Container(
+                child: Text(item.name),
+              ));
+      }).toList());
     }
     print("Length:" + this._productListByCategory.length.toString());
-    return new Column(
-      children: <Widget>[
-        categoryTitleText(this._currentCategory.name),
-      ]..addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
-          var item = _productListByCategory[index];
-          if (item == null)
-            return Text("NULL for item");
-          else
-            return GestureDetector(
-                onTap: () {},
-                child: Container(
-                  child: Text(item.name),
-                ));
-        }).toList()),
-    );
+    return new Column(children: widgetsInColumn);
   }
 
   Widget categoryTitleText(String catName) {
@@ -199,5 +200,13 @@ class _ShopMainPageState extends State<ShopMainPage> {
             Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)
           ])),
     );
+  }
+
+  Widget productItem(ProductModel pm) {
+    return GestureDetector(
+        onTap: () {},
+        child: Container(
+          child: Text(pm.name),
+        ));
   }
 }

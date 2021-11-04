@@ -134,7 +134,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   void topCategoryListOnClick(ProductCategoryModel item, int index) {
-    print(item.name + "; index:" + index);
+    print(item.name + "; index:" + index.toString());
   }
 
   ListView listOfProductForSpecificCat() {}

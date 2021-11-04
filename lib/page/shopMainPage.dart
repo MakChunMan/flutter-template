@@ -176,8 +176,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
     print("Length:" + this._productListByCategory.length.toString());
     return new Column(
       children: <Widget>[
-        Text("test"),
-        Text("test2")
+        categoryTitleText(),
       ]..addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
           var item = _productListByCategory[index];
           if (item == null)
@@ -190,5 +189,12 @@ class _ShopMainPageState extends State<ShopMainPage> {
                 ));
         }).toList()),
     );
+  }
+
+  Widget categoryTitleText(String catName) {
+    return Text(catName,
+        style: TextStyle(fontSize: 35, color: Colors.purple, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic, letterSpacing: 8, wordSpacing: 20, backgroundColor: Colors.yellow, shadows: [
+          Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)
+        ]));
   }
 }

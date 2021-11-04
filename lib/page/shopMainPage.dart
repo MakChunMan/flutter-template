@@ -205,9 +205,29 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget productItem(ProductModel pm) {
     return GestureDetector(
-        onTap: () {},
-        child: Container(
+      onTap: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 120.0,
+            width: 120.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                  pm.imagelink[0],
+                ),
+                fit: BoxFit.fill,
+              ),
+              shape: BoxShape.circle,
+            ),
+          ),
+          Text("pm.name"),
+        ],
+      ),
+      /**child: Container(
           child: Text(pm.name),
-        ));
+        ));**/
+    );
   }
 }

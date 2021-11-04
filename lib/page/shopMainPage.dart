@@ -192,9 +192,12 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   Widget categoryTitleText(String catName) {
-    return Text(catName,
-        style: TextStyle(fontSize: 35, color: Colors.purple, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic, letterSpacing: 8, wordSpacing: 20, backgroundColor: Colors.yellow, shadows: [
-          Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)
-        ]));
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: Text(catName,
+          style: TextStyle(fontSize: 35, color: Colors.purple, fontWeight: FontWeight.w700, fontStyle: FontStyle.italic, letterSpacing: 8, wordSpacing: 20, shadows: [
+            Shadow(color: Colors.blueAccent, offset: Offset(2, 1), blurRadius: 10)
+          ])),
+    );
   }
 }

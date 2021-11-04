@@ -29,6 +29,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
   //Page Model
   Future<List<ProductCategoryModel>> categoryListFuture;
   List<ProductCategoryModel> _categoryList = new List<ProductCategoryModel>();
+  ProductCategoryModel _currentCategory = null;
 
   @override
   void initState() {

@@ -21,8 +21,9 @@ class ProductModel {
         for (int i = 0; i < listOfImage.length; i++) {
           print(i.toString() + "/" + listOfImage.length.toString());
           if (ProductImage.fromJson(listOfImage[i]) != null) {
-            imagelinks.add(ProductImage.fromJson(listOfImage[i]).src);
-            //print(imagelinks[i]);
+            var imageurl = ProductImage.fromJson(listOfImage[i]).src;
+            print(imageurl);
+            imagelinks.add(imageurl);
           }
         }
       }

@@ -176,7 +176,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
     print("Length:" + this._productListByCategory.length.toString());
     return new Column(
       children: <Widget>[
-        categoryTitleText(),
+        categoryTitleText(this._currentCategory.name),
       ]..addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
           var item = _productListByCategory[index];
           if (item == null)

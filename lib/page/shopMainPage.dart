@@ -35,6 +35,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
   ProductCategoryModel _currentCategory = null;
   List<ProductModel> _productListByCategory = null;
 
+  //MemoryStorage
+  Map<int, List<ProductModel>> _cacheProductListByCategoryId;
+
   @override
   void initState() {
     super.initState();
@@ -145,13 +148,23 @@ class _ShopMainPageState extends State<ShopMainPage> {
       //this.pageTitle = s.title;
       this._currentCategory = item;
     });
-    productListByCategoryFuture = ProductRestService.getProductListByCategory(item.id.toString());
-    productListByCategoryFuture.then((s) {
+
+    //Check cache
+    if (_cacheProductListByCategoryId.containsKey(item.id)) {
       setState(() {
-        //this.pageTitle = s.title;
-        this._productListByCategory = s;
+        this._productListByCategory = _cacheProductListByCategoryId[item.id];
       });
-    });
+    } else {
+      productListByCategoryFuture = ProductRestService.getProductListByCategory(item.id.toString());
+      productListByCategoryFuture.then((s) {
+        setState(() {
+          //this.pageTitle = s.title;
+          this._productListByCategory = s;
+          this._cacheProductListByCategoryId[item.id] = s;
+          print("cache map size: " + this._cacheProductListByCategoryId.length.toString());
+        });
+      });
+    }
   }
 
   Widget listOfProductForSpecificCat() {

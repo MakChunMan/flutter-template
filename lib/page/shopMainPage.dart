@@ -158,6 +158,17 @@ class _ShopMainPageState extends State<ShopMainPage> {
     if (_productListByCategory == null) {
       return Text("");
     }
+    return new Column(
+      children: new List.generate(this._productListByCategory.length, (index) {
+        var item = _productListByCategory[index];
+        return GestureDetector(
+            onTap: () {},
+            child: Container(
+              child: Text(item.name),
+            ));
+      }).toList(),
+    );
+    /**
     return ListView.builder(
         scrollDirection: Axis.vertical,
         itemCount: _productListByCategory.length,
@@ -170,6 +181,6 @@ class _ShopMainPageState extends State<ShopMainPage> {
               child: Container(
                 child: Text(item.name),
               ));
-        });
+        }); */
   }
 }

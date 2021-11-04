@@ -221,7 +221,13 @@ class _ShopMainPageState extends State<ShopMainPage> {
             ),
           ),
           Column(children: [
-            Text(pm.name),
+            Container(
+                alignment: Alignment.centerLeft,
+                child: Text(pm.name,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ))),
             Row(
               children: [
                 Text("Price: 1.00"),

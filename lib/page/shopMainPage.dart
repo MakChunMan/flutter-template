@@ -165,7 +165,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
       children: new List.generate(this._productListByCategory.length, (index) {
         var item = _productListByCategory[index];
         if (item == null)
-          return null;
+          return Text("NULL for item");
         else
           return GestureDetector(
               onTap: () {},

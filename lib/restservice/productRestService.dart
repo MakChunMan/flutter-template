@@ -4,6 +4,7 @@ import '../util/propertiesUtil.dart';
 import '../util/stringUtil.dart';
 import '../util/services.dart';
 import '../model/productCategoryModel.dart';
+import '../model/productModel.dart';
 
 class ProductRestService {
   static Map<String, String> getWCAuthHeader() {
@@ -13,6 +14,22 @@ class ProductRestService {
     return {
       "Authorization": "Basic " + b
     };
+  }
+
+  static Future<List<ProductModel>> getProductListByCategory(String catId) async {
+    String url = PropertiesUtil.getWCApiUrl() + "/products/?category=" + catId;
+    //http://yourdomain.com/wp-json/wc/v3/products/?category={ID}
+    Response res = await get(Uri.parse(url), headers: getWCAuthHeader());
+    if (res.statusCode == 200) {
+      print(res.body);
+      List<dynamic> body = jsonDecode(res.body);
+      List<ProductModel> returnList = body
+          .map(
+            (dynamic item) => ProductModel.fromJson(item),
+          )
+          .toList();
+      return returnList;
+    }
   }
 
   static Future<List<ProductCategoryModel>> getCategoryList() async {

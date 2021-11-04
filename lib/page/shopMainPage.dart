@@ -82,43 +82,48 @@ class _ShopMainPageState extends State<ShopMainPage> {
             controller: _controller,
             itemBuilder: (BuildContext context, int index) {
               var item = _categoryList[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: (item == null || item.imagelink == null)
-                        ? null
-                        : DecorationImage(
-                            image: NetworkImage(
-                              item.imagelink,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: (item == null || item.imagelink == null)
+                          ? null
+                          : DecorationImage(
+                              image: NetworkImage(
+                                item.imagelink,
+                              ),
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                Colors.black26,
+                                BlendMode.darken,
+                              ),
                             ),
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Colors.black26,
-                              BlendMode.darken,
-                            ),
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.grey,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Align(
+                            alignment: Alignment.topLeft,
                           ),
-                    borderRadius: BorderRadius.circular(10.0),
-                    color: Colors.grey,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Align(
-                          alignment: Alignment.topLeft,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          item.name,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            item.name,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );

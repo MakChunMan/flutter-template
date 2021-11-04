@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../restservice/productRestService.dart';
 import '../component/appbar.dart';
 import '../model/productCategoryModel.dart';
+import '../model/productModel.dart';
 import '../util/mousepointScrollBehavior.dart';
 
 class ShopMainPage extends StatefulWidget {
@@ -28,8 +29,11 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   //Page Model
   Future<List<ProductCategoryModel>> categoryListFuture;
+  Future<List<ProductModel>> productListByCategoryFuture;
+
   List<ProductCategoryModel> _categoryList = new List<ProductCategoryModel>();
   ProductCategoryModel _currentCategory = null;
+  List<ProductModel> _productListByCategory = null;
 
   @override
   void initState() {
@@ -136,6 +140,17 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   void topCategoryListOnClick(ProductCategoryModel item, int index) {
     print(item.name + "; index:" + index.toString());
+    setState(() {
+      //this.pageTitle = s.title;
+      this._currentCategory = item;
+    });
+    productListByCategoryFuture = ProductRestService.getProductListByCategory(item.id.toString());
+    productListByCategoryFuture.then((s) {
+      setState(() {
+        //this.pageTitle = s.title;
+        this._productListByCategory = s;
+      });
+    });
   }
 
   ListView listOfProductForSpecificCat() {}

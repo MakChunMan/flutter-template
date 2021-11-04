@@ -175,31 +175,20 @@ class _ShopMainPageState extends State<ShopMainPage> {
     }
     print("Length:" + this._productListByCategory.length.toString());
     return new Column(
-      children: new List.generate(this._productListByCategory.length, (index) {
-        var item = _productListByCategory[index];
-        if (item == null)
-          return Text("NULL for item");
-        else
-          return GestureDetector(
-              onTap: () {},
-              child: Container(
-                child: Text(item.name),
-              ));
-      }).toList(),
-    );
-    /**
-    return ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: _productListByCategory.length,
-        itemExtent: 100.0,
-        controller: _controller,
-        itemBuilder: (BuildContext context, int index) {
+      children: <Widget>[
+        Text("test"),
+        Text("test2")
+      ]..addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
           var item = _productListByCategory[index];
-          return GestureDetector(
-              onTap: () {},
-              child: Container(
-                child: Text(item.name),
-              ));
-        }); */
+          if (item == null)
+            return Text("NULL for item");
+          else
+            return GestureDetector(
+                onTap: () {},
+                child: Container(
+                  child: Text(item.name),
+                ));
+        }).toList()),
+    );
   }
 }

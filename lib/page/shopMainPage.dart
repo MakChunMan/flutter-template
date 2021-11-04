@@ -222,6 +222,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
           ),
           Column(children: [
             Container(
+                width: double.infinity,
                 alignment: Alignment.centerLeft,
                 child: Text(pm.name,
                     style: TextStyle(

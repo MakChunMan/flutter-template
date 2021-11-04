@@ -169,7 +169,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget listOfProductForSpecificCat() {
     List<Widget> widgetsInColumn = [
-      categoryTitleText(this._currentCategory.name)
+      categoryTitleText(this._currentCategory == null ? "" : this._currentCategory.name)
     ];
     if (_productListByCategory == null) {
       //return Text("");

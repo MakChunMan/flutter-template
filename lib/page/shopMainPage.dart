@@ -220,21 +220,24 @@ class _ShopMainPageState extends State<ShopMainPage> {
               shape: BoxShape.circle,
             ),
           ),
-          Column(children: [
-            Container(
-                alignment: Alignment.centerLeft,
-                child: Text(pm.name,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    ))),
-            Row(
-              children: [
-                Text("Price: 1.00"),
-                addToCart(pm),
-              ],
-            )
-          ]),
+          Expanded(
+            flex: 7,
+            child: Column(children: [
+              Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(pm.name,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                      ))),
+              Row(
+                children: [
+                  Text("Price: 1.00"),
+                  addToCart(pm),
+                ],
+              )
+            ]),
+          ),
         ],
       ),
       /**child: Container(

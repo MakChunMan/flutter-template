@@ -154,9 +154,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
     });
   }
 
-  ListView listOfProductForSpecificCat() {
+  Widget listOfProductForSpecificCat() {
     if (_productListByCategory == null) {
-      return ListView();
+      return Text("");
     }
     return ListView.builder(
         scrollDirection: Axis.vertical,

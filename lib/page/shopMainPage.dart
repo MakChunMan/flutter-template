@@ -153,5 +153,19 @@ class _ShopMainPageState extends State<ShopMainPage> {
     });
   }
 
-  ListView listOfProductForSpecificCat() {}
+  ListView listOfProductForSpecificCat() {
+    return ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: _productListByCategory.length,
+        itemExtent: 100.0,
+        controller: _controller,
+        itemBuilder: (BuildContext context, int index) {
+          var item = _productListByCategory[index];
+          return GestureDetector(
+              onTap: () {},
+              child: Container(
+                child: Text(item.name),
+              ));
+        });
+  }
 }

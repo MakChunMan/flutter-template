@@ -188,7 +188,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
               ));
       }).toList());
     }
-    print("Length:" + this._productListByCategory.length.toString());
+    //print("Length:" + this._productListByCategory.length.toString());
     return new Column(children: widgetsInColumn);
   }
 

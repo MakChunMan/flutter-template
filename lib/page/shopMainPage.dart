@@ -51,6 +51,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         //this.pageTitle = s.title;
         this._categoryList = s;
         //Load data from preferences
+        print("loading...");
         loadPage();
       });
     });

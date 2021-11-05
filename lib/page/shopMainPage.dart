@@ -83,7 +83,10 @@ class _ShopMainPageState extends State<ShopMainPage> {
   void loadPage() {
     var _cartString = DBUtil.prefs.getString("_cart");
     if (!StringUtil.isNullOrEmpty(_cartString)) {
-      this._cart = jsonDecode(_cartString);
+      var thisCart = jsonDecode(_cartString);
+      if (thisCart != null) {
+        this._cart = jsonDecode(_cartString);
+      }
     }
     var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");
     if (!StringUtil.isNullOrEmpty(__currentCategoryJsonStr)) {

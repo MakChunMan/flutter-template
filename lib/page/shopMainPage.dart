@@ -223,6 +223,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
           Expanded(
             flex: 7,
             child: Column(children: [
+              //Product Name
               Container(
                   alignment: Alignment.centerLeft,
                   child: Text(pm.name,
@@ -233,7 +234,14 @@ class _ShopMainPageState extends State<ShopMainPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Price: 1.00"),
+                  //Product Price
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text("Price: 1.00",
+                        style: TextStyle(
+                          fontSize: 14,
+                        )),
+                  ),
                   addToCart(pm),
                 ],
               )
@@ -269,7 +277,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
       width: 150.0,
       color: Colors.transparent,
       child: Container(
-        decoration: BoxDecoration(color: Colors.blueGrey.withAlpha(30), borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        decoration: BoxDecoration(color: Colors.blueGrey.withAlpha(50), borderRadius: BorderRadius.all(Radius.circular(8.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

@@ -177,13 +177,25 @@ class _ShopMainPageState extends State<ShopMainPage> {
     } else if (_productListByCategory.length == 0) {
       //return Text("");
     } else {
+      this._productListByCategory.asMap().forEach((idx, item) {
+        var item = _productListByCategory[idx];
+        if (item == null)
+          widgetsInColumn.add(Text("NULL for item"));
+        else
+          widgetsInColumn.add(productItem(item));
+        widgetsInColumn.add(Divider(
+          color: Colors.teal.shade100,
+          thickness: 1.0,
+        ));
+      });
+      /**
       widgetsInColumn.addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
         var item = _productListByCategory[index];
         if (item == null)
           return Text("NULL for item");
         else
           return productItem(item);
-      }).toList());
+      }).toList()); */
     }
     //print("Length:" + this._productListByCategory.length.toString());
     return new Column(children: widgetsInColumn);

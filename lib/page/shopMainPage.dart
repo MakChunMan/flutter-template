@@ -246,35 +246,52 @@ class _ShopMainPageState extends State<ShopMainPage> {
     );
   }
 
+  int counter = 0;
   Widget addToCart(ProductModel pm) {
     return Container(
       height: 50.0,
       width: 150.0,
       color: Colors.transparent,
       child: Container(
-          decoration: BoxDecoration(color: Color(0xff91A3B0), borderRadius: BorderRadius.all(Radius.circular(10.0))),
-          child: new Center(
-              child: new Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "-",
-                style: TextStyle(color: Colors.white, fontSize: 36),
-                textAlign: TextAlign.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: Icon(
+                Icons.remove,
+                color: Theme.of(context).accentColor,
               ),
-              Text(
-                "12",
-                style: TextStyle(color: Colors.white, fontSize: 12),
-                textAlign: TextAlign.center,
+              padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
+              iconSize: 32.0,
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                setState(() {});
+              },
+            ),
+            Text(
+              '$counter',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
               ),
-              Text(
-                "+",
-                style: TextStyle(color: Colors.white, fontSize: 36),
-                textAlign: TextAlign.center,
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.add,
+                color: Theme.of(context).accentColor,
               ),
-            ],
-          ))),
+              padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
+              iconSize: 32.0,
+              color: Theme.of(context).primaryColor,
+              onPressed: () {
+                setState(() {});
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

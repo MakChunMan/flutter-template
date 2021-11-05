@@ -1,4 +1,8 @@
 class StringUtil {
+  static bool isNullOrEmpty(String str) {
+    return (str == null || str.trim == "");
+  }
+
   static String removeHtmlTag(String str) {
     return str.replaceAll("(?s)<(\\w+)\\b[^<>]*>.*?</\\1>", "");
   }

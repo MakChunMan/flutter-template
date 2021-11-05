@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../restservice/productRestService.dart';
 import '../component/appbar.dart';
 import '../model/productCategoryModel.dart';
 import '../model/productModel.dart';
 import '../util/mousepointScrollBehavior.dart';
+import '../util/dbUtil.dart';
+import '../util/stringUtil.dart';
 
 class ShopMainPage extends StatefulWidget {
   ShopMainPage({Key key, this.pageId}) : super(key: key);
@@ -47,8 +50,43 @@ class _ShopMainPageState extends State<ShopMainPage> {
       setState(() {
         //this.pageTitle = s.title;
         this._categoryList = s;
+        //Load data from preferences
+        loadPage();
       });
     });
+  }
+
+  @override
+  void dispose() {
+    print('dispose: $this');
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(Widget oldWidget) {
+    print('didUpdateWidget: $this');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void savePage() {
+    DBUtil.prefs.setString("_cart", jsonEncode(_cart));
+    DBUtil.prefs.setString("_currentCategory", jsonEncode(_currentCategory));
+    DBUtil.prefs.setString("_productListByCategory", jsonEncode(_productListByCategory));
+  }
+
+  void loadPage() {
+    var _cartString = DBUtil.prefs.getString("_cart");
+    if (!StringUtil.isNullOrEmpty(_cartString)) {
+      this._cart = jsonDecode(_cartString);
+    }
+    var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");
+    if (!StringUtil.isNullOrEmpty(__currentCategoryJsonStr)) {
+      this._currentCategory = jsonDecode(__currentCategoryJsonStr);
+    }
+    var _productListByCategoryJsonStr = DBUtil.prefs.getString("_productListByCategory");
+    if (!StringUtil.isNullOrEmpty(_productListByCategoryJsonStr)) {
+      this._productListByCategory = jsonDecode(_productListByCategoryJsonStr);
+    }
   }
 
   @override
@@ -224,18 +262,23 @@ class _ShopMainPageState extends State<ShopMainPage> {
         //mainAxisAlignment: MainAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Container(
-            height: 100.0,
-            width: 100.0,
-            decoration: BoxDecoration(
-              color: Colors.black12,
-              image: DecorationImage(
-                image: NetworkImage(
-                  pm.imagelink[0],
+          FlatButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              height: 100.0,
+              width: 100.0,
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                image: DecorationImage(
+                  image: NetworkImage(
+                    pm.imagelink[0],
+                  ),
+                  fit: BoxFit.fill,
                 ),
-                fit: BoxFit.fill,
+                shape: BoxShape.circle,
               ),
-              shape: BoxShape.circle,
             ),
           ),
           Expanded(

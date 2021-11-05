@@ -254,7 +254,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         color: Theme.of(context).accentColor,
       ),
       padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
-      iconSize: 32.0,
+      iconSize: 30.0,
       color: Theme.of(context).primaryColor,
       onPressed: () {
         setState(() {});
@@ -264,26 +264,15 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 50.0,
-      width: 150.0,
+      height: 30.0,
+      width: 120.0,
       color: Colors.transparent,
       child: Container(
-        decoration: BoxDecoration(color: Colors.blueGrey, borderRadius: BorderRadius.all(Radius.circular(10.0))),
+        decoration: BoxDecoration(color: Colors.blueGrey.withAlpha(30), borderRadius: BorderRadius.all(Radius.circular(10.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(
-              icon: Icon(
-                Icons.remove,
-                color: Theme.of(context).accentColor,
-              ),
-              padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
-              iconSize: 32.0,
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                setState(() {});
-              },
-            ),
+            counterButton(pm, -1), //-1: Minus
             Text(
               '$counter',
               textAlign: TextAlign.center,
@@ -293,18 +282,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            IconButton(
-              icon: Icon(
-                Icons.add,
-                color: Theme.of(context).accentColor,
-              ),
-              padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
-              iconSize: 32.0,
-              color: Theme.of(context).primaryColor,
-              onPressed: () {
-                setState(() {});
-              },
-            ),
+            counterButton(pm, 1), //1: Plus,
           ],
         ),
       ),

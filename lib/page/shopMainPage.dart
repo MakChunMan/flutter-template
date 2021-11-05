@@ -222,7 +222,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
           ),
           Expanded(
             flex: 7,
-            child: Column(children: [
+            child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               //Product Name
               Container(
                   alignment: Alignment.centerLeft,

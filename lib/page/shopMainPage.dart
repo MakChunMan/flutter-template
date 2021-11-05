@@ -255,6 +255,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
           decoration: BoxDecoration(color: Color(0xff91A3B0), borderRadius: BorderRadius.all(Radius.circular(10.0))),
           child: new Center(
               child: new Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(

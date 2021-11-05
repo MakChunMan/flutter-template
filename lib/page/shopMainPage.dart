@@ -221,26 +221,31 @@ class _ShopMainPageState extends State<ShopMainPage> {
             ),
           ),
           Expanded(
-            flex: 7,
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: [
-              //Product Name
-              productName(pm),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //Product Price
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text("Price: 1.00",
-                        style: TextStyle(
-                          fontSize: 14,
-                        )),
-                  ),
-                  addToCart(pm),
-                ],
-              )
-            ]),
-          ),
+              flex: 7,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 2.0,
+                  horizontal: 6.0,
+                ),
+                child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: [
+                  //Product Name
+                  productName(pm),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //Product Price
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text("Price: 1.00",
+                            style: TextStyle(
+                              fontSize: 16,
+                            )),
+                      ),
+                      addToCart(pm),
+                    ],
+                  )
+                ]),
+              )),
         ],
       ),
       /**child: Container(

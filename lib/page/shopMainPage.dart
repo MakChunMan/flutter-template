@@ -84,10 +84,10 @@ class _ShopMainPageState extends State<ShopMainPage> {
     var _cartString = DBUtil.prefs.getString("_cart");
     if (!StringUtil.isNullOrEmpty(_cartString)) {
       var thisCart = jsonDecode(_cartString);
-      if (thisCart != null) {
-        this._cart = thisCart;
-      }
+      _cart.clear;
+      _cart.addAll(thisCart);
     }
+    /**
     var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");
     if (!StringUtil.isNullOrEmpty(__currentCategoryJsonStr)) {
       this._currentCategory = jsonDecode(__currentCategoryJsonStr);
@@ -96,6 +96,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
     if (!StringUtil.isNullOrEmpty(_productListByCategoryJsonStr)) {
       this._productListByCategory = jsonDecode(_productListByCategoryJsonStr);
     }
+     */
   }
 
   @override

@@ -41,7 +41,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   //MemoryStorage
   Map<int, List<ProductModel>> _cacheProductListByCategoryId = new Map<int, List<ProductModel>>();
-  Map<int, int> _cart = new Map<int, int>(); //product id, quantity
+  Map<String, int> _cart = new Map<String, int>(); //product id, quantity
 
   @override
   void initState() {
@@ -72,8 +72,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   void savePage() {
-    DBUtil.prefs.setString("_cart", jsonEncode(CommonUtil.cartFromJson(_cart)));
-    print("serialized _cart:" + jsonEncode(CommonUtil.cartFromJson(_cart)));
+    DBUtil.prefs.setString("_cart", jsonEncode(_cart));
+    print("serialized _cart:" + jsonEncode(_cart));
     DBUtil.prefs.setString("_currentCategory", jsonEncode(_currentCategory));
     print("serialized _currentCategory:" + jsonEncode(_currentCategory));
     DBUtil.prefs.setString("_productListByCategory", jsonEncode(_productListByCategory));
@@ -85,7 +85,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
     if (!StringUtil.isNullOrEmpty(_cartString)) {
       var thisCart = jsonDecode(_cartString);
       if (thisCart != null) {
-        this._cart = jsonDecode(_cartString);
+        this._cart = thisCart;
       }
     }
     var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");
@@ -330,10 +330,10 @@ class _ShopMainPageState extends State<ShopMainPage> {
   int _getQtyInCart(ProductModel pm) {
     if (_cart == null)
       return 0;
-    else if (_cart[pm.id] == null)
+    else if (_cart[pm.id.toString()] == null)
       return 0;
     else
-      return _cart[pm.id];
+      return _cart[pm.id.toString()];
   }
 
   void _addRemoveInCart(ProductModel pm, int counterType) {
@@ -341,11 +341,11 @@ class _ShopMainPageState extends State<ShopMainPage> {
     var countAfterChange = count + counterType;
     if (countAfterChange <= 0) {
       setState(() {
-        if (_cart[pm.id] != null) _cart.remove(pm.id);
+        if (_cart[pm.id.toString()] != null) _cart.remove(pm.id.toString());
       });
     } else {
       setState(() {
-        _cart[pm.id] = countAfterChange;
+        _cart[pm.id.toString()] = countAfterChange;
       });
     }
   }

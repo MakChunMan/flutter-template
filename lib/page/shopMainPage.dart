@@ -72,8 +72,11 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   void savePage() {
     DBUtil.prefs.setString("_cart", jsonEncode(_cart));
+    print("serialized _cart:" + jsonEncode(_cart));
     DBUtil.prefs.setString("_currentCategory", jsonEncode(_currentCategory));
+    print("serialized _currentCategory:" + jsonEncode(_currentCategory));
     DBUtil.prefs.setString("_productListByCategory", jsonEncode(_productListByCategory));
+    print("serialized _productListByCategory:" + jsonEncode(_productListByCategory));
   }
 
   void loadPage() {

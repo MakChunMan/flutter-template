@@ -8,6 +8,7 @@ import '../model/productModel.dart';
 import '../util/mousepointScrollBehavior.dart';
 import '../util/dbUtil.dart';
 import '../util/stringUtil.dart';
+import '../util/commonUtil.dart';
 
 class ShopMainPage extends StatefulWidget {
   ShopMainPage({Key key, this.pageId}) : super(key: key);
@@ -71,8 +72,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   void savePage() {
-    DBUtil.prefs.setString("_cart", jsonEncode(_cart));
-    print("serialized _cart:" + jsonEncode(_cart));
+    DBUtil.prefs.setString("_cart", jsonEncode(CommonUtil.cartFromJson(_cart)));
+    print("serialized _cart:" + jsonEncode(CommonUtil.cartFromJson(_cart)));
     DBUtil.prefs.setString("_currentCategory", jsonEncode(_currentCategory));
     print("serialized _currentCategory:" + jsonEncode(_currentCategory));
     DBUtil.prefs.setString("_productListByCategory", jsonEncode(_productListByCategory));

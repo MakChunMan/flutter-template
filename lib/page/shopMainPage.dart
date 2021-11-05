@@ -209,7 +209,6 @@ class _ShopMainPageState extends State<ShopMainPage> {
           Container(
             height: 100.0,
             width: 100.0,
-            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
             decoration: BoxDecoration(
               color: Colors.black12,
               image: DecorationImage(
@@ -223,15 +222,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
           ),
           Expanded(
             flex: 7,
-            child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+            child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: [
               //Product Name
-              Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text(pm.name,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                      ))),
+              productName(pm),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -270,6 +263,16 @@ class _ShopMainPageState extends State<ShopMainPage> {
         setState(() {});
       },
     );
+  }
+
+  Widget productName(ProductModel pm) {
+    return Container(
+        alignment: Alignment.centerLeft,
+        child: Text(pm.name,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            )));
   }
 
   Widget addToCart(ProductModel pm) {

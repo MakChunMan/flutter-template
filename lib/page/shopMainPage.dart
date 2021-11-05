@@ -231,6 +231,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
                         fontWeight: FontWeight.w700,
                       ))),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Price: 1.00"),
                   addToCart(pm),
@@ -253,8 +254,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
         counterType > 0 ? Icons.add : Icons.remove,
         color: Theme.of(context).accentColor,
       ),
-      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
-      iconSize: 32.0,
+      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+      iconSize: 28.0,
       color: Theme.of(context).primaryColor,
       onPressed: () {
         setState(() {});

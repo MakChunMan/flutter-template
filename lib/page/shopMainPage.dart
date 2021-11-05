@@ -247,12 +247,28 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   int counter = 0;
+  IconButton counterButton(ProductModel pm, int counterType) {
+    return IconButton(
+      icon: Icon(
+        counterType > 0 ? Icons.add : Icons.remove,
+        color: Theme.of(context).accentColor,
+      ),
+      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 18.0),
+      iconSize: 32.0,
+      color: Theme.of(context).primaryColor,
+      onPressed: () {
+        setState(() {});
+      },
+    );
+  }
+
   Widget addToCart(ProductModel pm) {
     return Container(
       height: 50.0,
       width: 150.0,
       color: Colors.transparent,
       child: Container(
+        decoration: BoxDecoration(color: Colors.blueGrey, borderRadius: BorderRadius.all(Radius.circular(10.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

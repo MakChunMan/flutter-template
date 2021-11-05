@@ -207,8 +207,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            height: 120.0,
-            width: 120.0,
+            height: 100.0,
+            width: 100.0,
+            padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
             decoration: BoxDecoration(
               color: Colors.black12,
               image: DecorationImage(

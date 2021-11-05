@@ -263,7 +263,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         counterType > 0 ? Icons.add : Icons.remove,
         color: Theme.of(context).accentColor,
       ),
-      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+      padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 10.0),
       iconSize: 28.0,
       color: Theme.of(context).primaryColor,
       onPressed: () {
@@ -274,7 +274,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 45.0,
+      height: 35.0,
       width: 130.0,
       color: Colors.transparent,
       child: Container(

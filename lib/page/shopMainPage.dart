@@ -37,6 +37,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   //MemoryStorage
   Map<int, List<ProductModel>> _cacheProductListByCategoryId = new Map<int, List<ProductModel>>();
+  Map<int, int> _cart = new Map<int, int>(); //product id, quantity
 
   @override
   void initState() {
@@ -248,7 +249,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
                       //Product Price
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: Text("Price: 1.00",
+                        child: Text("Price: " + pm.price.toStringAsFixed(2),
                             style: TextStyle(
                               fontSize: 16,
                             )),
@@ -266,7 +267,32 @@ class _ShopMainPageState extends State<ShopMainPage> {
     );
   }
 
-  int counter = 0;
+  /*********************************************************************************
+  Add / Remove on cart
+  ********************************************************************************** */
+  int _getQtyInCart(ProductModel pm) {
+    if (_cart == null)
+      return 0;
+    else if (_cart[pm.id] == null)
+      return 0;
+    else
+      return _cart[pm.id];
+  }
+
+  void _addRemoveInCart(ProductModel pm, int counterType) {
+    var count = _getQtyInCart(pm);
+    var countAfterChange = count + counterType;
+    if (countAfterChange <= 0) {
+      setState(() {
+        if (_cart[pm.id] != null) _cart.remove(pm.id);
+      });
+    } else {
+      setState(() {
+        _cart[pm.id] = countAfterChange;
+      });
+    }
+  }
+
   IconButton counterButton(ProductModel pm, int counterType) {
     return IconButton(
       icon: Icon(
@@ -277,7 +303,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
       iconSize: 28.0,
       color: Theme.of(context).primaryColor,
       onPressed: () {
-        setState(() {});
+        _addRemoveInCart(pm, counterType);
       },
     );
   }
@@ -292,6 +318,33 @@ class _ShopMainPageState extends State<ShopMainPage> {
             )));
   }
 
+  List<Widget> _buildCartButton(ProductModel pm) {
+    if (_getQtyInCart(pm) > 0) {
+      return [
+        counterButton(pm, -1), //-1: Minus
+        Text(
+          _getQtyInCart(pm).toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.black87,
+            fontSize: 18.0,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        counterButton(pm, 1), //1: Plus,
+      ];
+    } else {
+      return [
+        FlatButton(
+          onPressed: () {
+            _addRemoveInCart(pm, 1);
+          },
+          child: Text("Add to Cart"),
+        ),
+      ];
+    }
+  }
+
   Widget addToCart(ProductModel pm) {
     return Container(
       height: 35.0,
@@ -301,19 +354,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         decoration: BoxDecoration(color: Colors.blueGrey.withAlpha(50), borderRadius: BorderRadius.all(Radius.circular(8.0))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            counterButton(pm, -1), //-1: Minus
-            Text(
-              '$counter',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            counterButton(pm, 1), //1: Plus,
-          ],
+          children: _buildCartButton(pm), //By qty in cart, display "Add to Cart" to add/remove counter
         ),
       ),
     );

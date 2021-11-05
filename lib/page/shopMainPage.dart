@@ -59,6 +59,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
   @override
   void dispose() {
     print('dispose: $this');
+    savePage();
     super.dispose();
   }
 

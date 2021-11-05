@@ -74,10 +74,12 @@ class _ShopMainPageState extends State<ShopMainPage> {
   void savePage() {
     DBUtil.prefs.setString("_cart", jsonEncode(_cart));
     print("serialized _cart:" + jsonEncode(_cart));
+    /**
     DBUtil.prefs.setString("_currentCategory", jsonEncode(_currentCategory));
     print("serialized _currentCategory:" + jsonEncode(_currentCategory));
     DBUtil.prefs.setString("_productListByCategory", jsonEncode(_productListByCategory));
     print("serialized _productListByCategory:" + jsonEncode(_productListByCategory));
+     */
   }
 
   void loadPage() {
@@ -88,6 +90,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
       thisCart.forEach((k, v) {
         _cart[k] = v;
       });
+      print(_cart.length.toString() + " of items in cart are loaded");
     }
     /**
     var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");

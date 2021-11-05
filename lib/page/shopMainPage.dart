@@ -273,8 +273,8 @@ class _ShopMainPageState extends State<ShopMainPage> {
 
   Widget addToCart(ProductModel pm) {
     return Container(
-      height: 50.0,
-      width: 150.0,
+      height: 45.0,
+      width: 130.0,
       color: Colors.transparent,
       child: Container(
         decoration: BoxDecoration(color: Colors.blueGrey.withAlpha(50), borderRadius: BorderRadius.all(Radius.circular(8.0))),

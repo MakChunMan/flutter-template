@@ -161,9 +161,14 @@ class _ShopMainPageState extends State<ShopMainPage> {
       productListByCategoryFuture.then((s) {
         setState(() {
           //this.pageTitle = s.title;
-          this._productListByCategory = s;
-          this._cacheProductListByCategoryId[item.id] = s;
-          print("cache map size: " + this._cacheProductListByCategoryId.length.toString());
+          if (this._currentCategory.id == item.id) {
+            this._productListByCategory = s;
+            this._cacheProductListByCategoryId[item.id] = s;
+            print("cache map size: " + this._cacheProductListByCategoryId.length.toString());
+          } else {
+            //Neglact the future as already click other category
+            print("Neglact the future as already click other category");
+          }
         });
       });
     }

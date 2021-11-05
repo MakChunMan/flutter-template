@@ -252,17 +252,25 @@ class _ShopMainPageState extends State<ShopMainPage> {
       width: 150.0,
       color: Colors.transparent,
       child: Container(
-          decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          decoration: BoxDecoration(color: Color(0xff91A3B0), borderRadius: BorderRadius.all(Radius.circular(10.0))),
           child: new Center(
               child: new Row(
             children: [
-              Text("-"),
+              Text(
+                "-",
+                style: TextStyle(color: Colors.white, fontSize: 36),
+                textAlign: TextAlign.center,
+              ),
               Text(
                 "12",
                 style: TextStyle(color: Colors.white, fontSize: 12),
                 textAlign: TextAlign.center,
               ),
-              Text("+"),
+              Text(
+                "+",
+                style: TextStyle(color: Colors.white, fontSize: 36),
+                textAlign: TextAlign.center,
+              ),
             ],
           ))),
     );

@@ -49,7 +49,7 @@ class _CartPageState extends State<CartPage> {
     super.initState();
     loadPage();
     if (_cart != null && _cart.length > 0) {
-      print("_cart size before loading product details:"+ _cart.length.toString());
+      print("_cart size before loading product details:" + _cart.length.toString());
       productListByIdListFuture = ProductRestService.getProductListByIdList(_cart.keys.toList());
       productListByIdListFuture.then((s) {
         Map<String, ProductModel> aMap = new Map<String, ProductModel>();
@@ -149,14 +149,14 @@ class _CartPageState extends State<CartPage> {
         var item = _cartProductDetails[idx];
         if (item == null)
           widgetsInColumn.add(Text("NULL for item"));
-        else {
+        else if (_cart[item.id.toString()] > 0) {
           widgetsInColumn.add(productItem(item));
           amt += item.price * _cart[item.id.toString()];
+          widgetsInColumn.add(Divider(
+            color: Colors.teal.shade100,
+            thickness: 1.0,
+          ));
         }
-        widgetsInColumn.add(Divider(
-          color: Colors.teal.shade100,
-          thickness: 1.0,
-        ));
       });
       setState(() {
         totalAmount = amt;

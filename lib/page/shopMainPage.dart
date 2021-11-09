@@ -391,6 +391,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
       setState(() {
         _cart[pm.id.toString()] = countAfterChange;
       });
+      print("Cart updated: " + _cart.length.toString());
     }
   }
 

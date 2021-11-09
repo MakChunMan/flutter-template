@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
+import '../util/stringUtil.dart';
 
 class ProductCategoryModel {
   final int id;
@@ -22,11 +23,17 @@ class ProductCategoryModel {
 
   factory ProductCategoryModel.fromJson(Map<String, dynamic> json) {
     var catImage;
-    if (json["image"] != null) {
+    if (json == null) {
+      print("json is null");
+      return null;
+    } else if (json["image"] != null) {
       print("json is not null");
       catImage = CategoryImage.fromJson(json["image"]);
-      print("catImage is not null");
+      print("image is not null");
       print(catImage.src);
+    } else if (StringUtil.isNullOrEmpty(json['imagelink']) != null) {
+      print("json is not null");
+      print("imagelink is not null");
     } else {
       print("json is null");
       print("catImage is  null");

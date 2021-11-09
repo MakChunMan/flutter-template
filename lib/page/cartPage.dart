@@ -159,7 +159,14 @@ class _CartPageState extends State<CartPage> {
       });
       setState(() {
         totalAmount = amt;
-        widgetsInColumn.add(Text("Total amount: " + totalAmount.toString()));
+        widgetsInColumn.add(
+          Text("Total amount: " + totalAmount.toString(),
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              )),
+        );
       });
       /**
       widgetsInColumn.addAll(List<Widget>.generate(this._productListByCategory.length, (index) {

@@ -10,44 +10,51 @@ import '../util/dbUtil.dart';
 import '../util/stringUtil.dart';
 import '../util/commonUtil.dart';
 
-class ShopMainPage extends StatefulWidget {
-  ShopMainPage({Key key, this.pageId}) : super(key: key);
+class CartPage extends StatefulWidget {
+  CartPage({
+    Key key, //this.pageId
+  }) : super(key: key);
 
   //In-param
-  final String pageId;
 
   @override
-  _ShopMainPageState createState() => _ShopMainPageState(this.pageId);
+  _CartPageState createState() => _CartPageState();
 
   //static getInstance({Key key, String pageId}) {
   static getInstance(Map<String, String> param) {
-    return new ShopMainPage(pageId: param["pageId"].toString());
+    return new CartPage();
   }
 }
 
-class _ShopMainPageState extends State<ShopMainPage> {
+class _CartPageState extends State<CartPage> {
   //Constructor
-  String pageId;
-  String pageTitle = "Home";
-  _ShopMainPageState(this.pageId);
+  String pageTitle = "Cart";
 
   //Page Model
-  Future<List<ProductCategoryModel>> categoryListFuture;
-  Future<List<ProductModel>> productListByCategoryFuture;
+  //Future<List<ProductCategoryModel>> categoryListFuture;
+  //Future<List<ProductModel>> productListByCategoryFuture;
+  Future<List<ProductModel>> productListByIdListFuture;
 
-  List<ProductCategoryModel> _categoryList = new List<ProductCategoryModel>();
-  ProductCategoryModel _currentCategory = null;
-  List<ProductModel> _productListByCategory = null;
+  //List<ProductCategoryModel> _categoryList = new List<ProductCategoryModel>();
+  //ProductCategoryModel _currentCategory = null;
+  //List<ProductModel> _productListByCategory = null;
 
   //MemoryStorage
-  Map<int, List<ProductModel>> _cacheProductListByCategoryId = new Map<int, List<ProductModel>>();
+  //Map<int, List<ProductModel>> _cacheProductListByCategoryId = new Map<int, List<ProductModel>>();
   Map<String, int> _cart = new Map<String, int>(); //product id, quantity
+  Map<String, ProductModel> _cartProductDetails = new Map<String, ProductModel>();
 
   @override
   void initState() {
     super.initState();
-    categoryListFuture = ProductRestService.getCategoryList();
-    categoryListFuture.then((s) {
+    loadPage();
+    if (_cart != null && _cart.length > 0) {
+      productListByIdListFuture.then((s) {
+        setState(() {
+          
+      });
+    }
+    
       setState(() {
         //this.pageTitle = s.title;
         this._categoryList = s;

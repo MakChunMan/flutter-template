@@ -38,12 +38,20 @@ class ProductCategoryModel {
       name: json['name'] as String,
       description: json['description'] as String,
       //imagelink: json['image'].src as String,
-      imagelink: (catImage == null) ? "" : catImage.src,
-      imageid: (catImage == null) ? null : catImage.id,
+      imagelink: (catImage == null) ? (json['imagelink'] == null ? "" : json['imagelink']) : catImage.src,
+      imageid: (catImage == null) ? (json['imageid'] == null ? "" : json['imageid']) : catImage.id,
       //catlink: json['_links']['self'][0] as String,
       //catcount: json['count'] as int,
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        'id': this.id,
+        'name': this.name,
+        'description': this.description,
+        'imagelink': this.imagelink,
+        'imageid': this.imageid,
+      };
 }
 
 class CategoryImage {

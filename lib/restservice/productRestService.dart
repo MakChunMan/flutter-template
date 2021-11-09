@@ -16,6 +16,24 @@ class ProductRestService {
     };
   }
 
+  static Future<List<ProductModel>> getProductListByIdList(List<String> idList) async {
+    //https://test.com/wp-json/wc/v3/products?consumer_key=ck_&consumer_secret=cs_&include=1,2,3
+    String url = PropertiesUtil.getWCApiUrl() + "/products/?include=" + idList.join(",");
+    Response res = await get(Uri.parse(url), headers: getWCAuthHeader());
+    if (res.statusCode == 200) {
+      print(res.body);
+      List<dynamic> body = jsonDecode(res.body);
+      List<ProductModel> returnList = body
+          .map(
+            (dynamic item) => ProductModel.fromJson(item),
+          )
+          .toList();
+      return returnList;
+    } else {
+      return null;
+    }
+  }
+
   static Future<List<ProductModel>> getProductListByCategory(String catId) async {
     String url = PropertiesUtil.getWCApiUrl() + "/products/?category=" + catId;
     //http://yourdomain.com/wp-json/wc/v3/products/?category={ID}

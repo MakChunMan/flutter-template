@@ -275,6 +275,7 @@ class _CartPageState extends State<CartPage> {
         _cart[pm.id.toString()] = countAfterChange;
       });
     }
+    recalculateTotal();
   }
 
   void recalculateTotal() {

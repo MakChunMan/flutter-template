@@ -277,6 +277,16 @@ class _CartPageState extends State<CartPage> {
     }
   }
 
+  void recalculateTotal() {
+    var tot = 0.0;
+    _cart.forEach((k, v) {
+      tot += v * _cartProductDetails[k].price;
+    });
+    setState(() {
+      this.totalAmount = tot;
+    });
+  }
+
   IconButton counterButton(ProductModel pm, int counterType) {
     return IconButton(
       icon: Icon(

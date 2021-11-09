@@ -67,6 +67,20 @@ class _ShopMainPageState extends State<ShopMainPage> {
   }
 
   @override
+  void didPop() {
+    categoryListFuture = ProductRestService.getCategoryList();
+    categoryListFuture.then((s) {
+      setState(() {
+        //this.pageTitle = s.title;
+        this._categoryList = s;
+        //Load data from preferences
+        print("didPop loading...");
+        loadPage();
+      });
+    });
+  }
+
+  @override
   void didUpdateWidget(Widget oldWidget) {
     print('didUpdateWidget: $this');
     super.didUpdateWidget(oldWidget);

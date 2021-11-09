@@ -9,6 +9,7 @@ import '../util/mousepointScrollBehavior.dart';
 import '../util/dbUtil.dart';
 import '../util/stringUtil.dart';
 import '../util/commonUtil.dart';
+import '../page/cartPage.dart';
 
 class ShopMainPage extends StatefulWidget {
   ShopMainPage({Key key, this.pageId}) : super(key: key);
@@ -249,6 +250,25 @@ class _ShopMainPageState extends State<ShopMainPage> {
           thickness: 1.0,
         ));
       });
+      widgetsInColumn.add(
+          //Go to cart
+          FlatButton(
+        // splashColor: Colors.red,
+        color: Colors.green,
+        // textColor: Colors.white,
+        child: Text(
+          'Go to Cart',
+        ),
+        onPressed: () {
+          setState(() {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CartPage(),
+              ),
+            );
+          });
+        },
+      ));
       /**
       widgetsInColumn.addAll(List<Widget>.generate(this._productListByCategory.length, (index) {
         var item = _productListByCategory[index];

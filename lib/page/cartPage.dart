@@ -49,6 +49,7 @@ class _CartPageState extends State<CartPage> {
     super.initState();
     loadPage();
     if (_cart != null && _cart.length > 0) {
+      print("_cart size before loading product details:"+ _cart.length.toString());
       productListByIdListFuture = ProductRestService.getProductListByIdList(_cart.keys.toList());
       productListByIdListFuture.then((s) {
         Map<String, ProductModel> aMap = new Map<String, ProductModel>();

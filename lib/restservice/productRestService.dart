@@ -19,6 +19,7 @@ class ProductRestService {
   static Future<List<ProductModel>> getProductListByIdList(List<String> idList) async {
     //https://test.com/wp-json/wc/v3/products?consumer_key=ck_&consumer_secret=cs_&include=1,2,3
     String url = PropertiesUtil.getWCApiUrl() + "/products/?include=" + idList.join(",");
+    print(url);
     Response res = await get(Uri.parse(url), headers: getWCAuthHeader());
     if (res.statusCode == 200) {
       print(res.body);

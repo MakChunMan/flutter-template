@@ -52,7 +52,8 @@ class _CartPageState extends State<CartPage> {
       productListByIdListFuture = ProductRestService.getProductListByIdList(_cart.keys);
       productListByIdListFuture.then((s) {
         Map<String, ProductModel> aMap = new Map<String, ProductModel>();
-        s.forEach((p) {
+        List<ProductModel> r = s;
+        r.forEach((p) {
           aMap[p.id.toString()] = p;
         });
         setState(() {

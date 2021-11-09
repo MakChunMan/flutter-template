@@ -94,7 +94,9 @@ class _ShopMainPageState extends State<ShopMainPage> {
       });
       print(_cart.length.toString() + " of items in cart are loaded");
     }
+    print("Loading __currentCategoryJsonStr");
     var __currentCategoryJsonStr = DBUtil.prefs.getString("_currentCategory");
+    print("__currentCategoryJsonStr:" + __currentCategoryJsonStr);
     if (!StringUtil.isNullOrEmpty(__currentCategoryJsonStr)) {
       this._currentCategory = ProductCategoryModel.fromJson(jsonDecode(__currentCategoryJsonStr));
       print("Current Cat is :" + this._currentCategory.name);

@@ -31,7 +31,7 @@ class ProductCategoryModel {
       catImage = CategoryImage.fromJson(json["image"]);
       print("image is not null");
       print(catImage.src);
-    } else if (StringUtil.isNullOrEmpty(json['imagelink']) != null) {
+    } else if (!StringUtil.isNullOrEmpty(json['imagelink'])) {
       print("json is not null");
       print("imagelink is not null");
     } else {

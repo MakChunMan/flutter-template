@@ -132,8 +132,9 @@ class _CartPageState extends State<CartPage> {
   }
 
   final _controller = ScrollController();
-
+  double totalAmount = 0.0;
   Widget listOfProductForSpecificCat() {
+    double amt = 0.0;
     List<Widget> widgetsInColumn = [
       //categoryTitleText(this._currentCategory == null ? "" : this._currentCategory.name)
       categoryTitleText("Cart")
@@ -147,12 +148,18 @@ class _CartPageState extends State<CartPage> {
         var item = _cartProductDetails[idx];
         if (item == null)
           widgetsInColumn.add(Text("NULL for item"));
-        else
+        else {
           widgetsInColumn.add(productItem(item));
+          amt += item.price * _cart[item.id.toString()];
+        }
         widgetsInColumn.add(Divider(
           color: Colors.teal.shade100,
           thickness: 1.0,
         ));
+      });
+      setState(() {
+        totalAmount = amt;
+        widgetsInColumn.add(Text("Total amount: " + totalAmount.toString()));
       });
       /**
       widgetsInColumn.addAll(List<Widget>.generate(this._productListByCategory.length, (index) {

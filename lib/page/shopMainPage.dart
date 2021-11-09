@@ -277,6 +277,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         ),
         onPressed: () {
           setState(() {
+            savePage();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => CartPage(),

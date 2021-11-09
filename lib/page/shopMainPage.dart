@@ -26,7 +26,7 @@ class ShopMainPage extends StatefulWidget {
   }
 }
 
-class _ShopMainPageState extends State<ShopMainPage> {
+class _ShopMainPageState extends State<ShopMainPage> with RouteAware {
   //Constructor
   String pageId;
   String pageTitle = "Home";
@@ -78,6 +78,7 @@ class _ShopMainPageState extends State<ShopMainPage> {
         loadPage();
       });
     });
+    return super.didPop();
   }
 
   @override

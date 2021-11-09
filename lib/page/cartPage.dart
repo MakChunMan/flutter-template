@@ -149,7 +149,7 @@ class _CartPageState extends State<CartPage> {
         var item = _cartProductDetails[idx];
         if (item == null)
           widgetsInColumn.add(Text("NULL for item"));
-        else if (_cart[item.id.toString()] > 0) {
+        else if (_cart[item.id.toString()] != null) {
           widgetsInColumn.add(productItem(item));
           amt += item.price * _cart[item.id.toString()];
           widgetsInColumn.add(Divider(

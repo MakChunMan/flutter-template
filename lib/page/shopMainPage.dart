@@ -67,21 +67,6 @@ class _ShopMainPageState extends State<ShopMainPage> with RouteAware {
   }
 
   @override
-  void didPop() {
-    categoryListFuture = ProductRestService.getCategoryList();
-    categoryListFuture.then((s) {
-      setState(() {
-        //this.pageTitle = s.title;
-        this._categoryList = s;
-        //Load data from preferences
-        print("didPop loading...");
-        loadPage();
-      });
-    });
-    return super.didPop();
-  }
-
-  @override
   void didUpdateWidget(Widget oldWidget) {
     print('didUpdateWidget: $this');
     super.didUpdateWidget(oldWidget);
@@ -276,14 +261,15 @@ class _ShopMainPageState extends State<ShopMainPage> with RouteAware {
         child: Text(
           'Go to Cart',
         ),
-        onPressed: () {
-          setState(() {
+        onPressed: () async {
+          setState(() async {
             savePage();
-            Navigator.of(context).push(
+            var reloadBoolean = await Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => CartPage(),
               ),
             );
+            if (reloadBoolean) loadPage();
           });
         },
       ));

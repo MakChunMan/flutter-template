@@ -106,27 +106,34 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarComponent.getAppBar(context, pageTitle, null),
-      body: ScrollConfiguration(
-        behavior: MousePointScrollBehavior(),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: TextFormField(
-                decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+      body: WillPopScope(
+        onWillPop: () {
+          //on Back button press, you can use WillPopScope for another purpose also.
+          Navigator.pop(context, true); //return data along with pop
+          return new Future(() => false); //onWillPop is Future<bool> so return false
+        },
+        child: ScrollConfiguration(
+          behavior: MousePointScrollBehavior(),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: TextFormField(
+                  decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Enter text to search', labelText: 'Search', prefixIcon: Icon(Icons.search)),
+                ),
               ),
-            ),
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  //_categoryListView(),
-                  listOfProductForSpecificCat(),
-                  //_buildCardListView(),
-                  //_buildRequestListView(),
-                ],
+              Expanded(
+                child: ListView(
+                  children: <Widget>[
+                    //_categoryListView(),
+                    listOfProductForSpecificCat(),
+                    //_buildCardListView(),
+                    //_buildRequestListView(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

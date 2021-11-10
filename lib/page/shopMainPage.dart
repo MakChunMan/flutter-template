@@ -88,9 +88,12 @@ class _ShopMainPageState extends State<ShopMainPage> with RouteAware {
     var _cartString = DBUtil.prefs.getString("_cart");
     if (!StringUtil.isNullOrEmpty(_cartString)) {
       var thisCart = jsonDecode(_cartString);
-      _cart.clear;
+      Map<String, int> aMap = {};
       thisCart.forEach((k, v) {
-        _cart[k] = v;
+        aMap[k] = v;
+      });
+      setState(() {
+        _cart = aMap;
       });
       print(_cart.length.toString() + " of items in cart are loaded");
     }

@@ -68,7 +68,6 @@ class _CartPageState extends State<CartPage> {
   @override
   void dispose() {
     print('dispose: $this');
-    savePage();
     super.dispose();
   }
 
@@ -78,9 +77,10 @@ class _CartPageState extends State<CartPage> {
     super.didUpdateWidget(oldWidget);
   }
 
-  void savePage() {
+  Future<String> savePage() {
     DBUtil.prefs.setString("_cart", jsonEncode(_cart));
     print("serialized _cart:" + jsonEncode(_cart));
+    return new Future(() => "save");
   }
 
   void loadPage() {
@@ -107,8 +107,9 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       appBar: AppBarComponent.getAppBar(context, pageTitle, null),
       body: WillPopScope(
-        onWillPop: () {
+        onWillPop: () async {
           //on Back button press, you can use WillPopScope for another purpose also.
+          await savePage();
           Navigator.pop(context, true); //return data along with pop
           return new Future(() => false); //onWillPop is Future<bool> so return false
         },

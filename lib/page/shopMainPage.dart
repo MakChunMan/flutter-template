@@ -262,15 +262,15 @@ class _ShopMainPageState extends State<ShopMainPage> with RouteAware {
           'Go to Cart',
         ),
         onPressed: () async {
-          setState(() async {
+          setState(() {
             savePage();
-            var reloadBoolean = await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => CartPage(),
-              ),
-            );
-            if (reloadBoolean) loadPage();
           });
+          var reloadBoolean = await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => CartPage(),
+            ),
+          );
+          if (reloadBoolean) loadPage();
         },
       ));
       /**

@@ -31,6 +31,7 @@ class Rendered {
   });
 
   factory Rendered.fromJson(Map<String, dynamic> json) {
+    print("Debug Appid:" + json['app_id']);
     return Rendered(app_id: json['app_id'] == null ? null : json["app_id"], menuitems: json['menuitems'] == null ? null : List<MenuItem>.from(json['menuitems'].map((x) => MenuItem.fromJson(x))), otherPages: json['otherpages'] == null ? null : List<MenuItem>.from(json['otherpages'].map((x) => MenuItem.fromJson(x))));
   }
 }
@@ -44,13 +45,14 @@ class MenuItem {
 
   MenuItem({
     @required this.name,
-    @required this.pageid,
-    @required this.displayorder,
+    this.pageid,
+    this.displayorder,
     this.pagecode,
     this.formid,
   });
 
   factory MenuItem.fromJson(Map<String, dynamic> json) {
+    print("Debug:" + json['name']);
     return MenuItem(
       name: json['name'] as String,
       pageid: json['page-id'] as String,

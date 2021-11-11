@@ -20,7 +20,7 @@ class CommonRestService {
       print("Get 200 from pageId:" + pageId);
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
-      print("===> Content:" + StringUtil.removeHtmlTag(StringUtil.trim(aStr, 200)) + "...");
+      print("===> Content:" + StringUtil.removeHtmlTag(aStr));
 
       GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: StringUtil.removeHtmlTag(map["title"]['rendered']));
 

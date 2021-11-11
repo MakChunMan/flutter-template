@@ -1,8 +1,4 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-//import '../restservice/productRestService.dart';
-//import '../component/appbar.dart';
-//import '../model/productCategoryModel.dart';
 import '../util/mousepointScrollBehavior.dart';
 
 class MainPage extends StatefulWidget {

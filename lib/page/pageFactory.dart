@@ -7,6 +7,7 @@ class PageFactory {
     //"productcat": ProductCategoryPage.getInstance,
     "shopmain": ShopMainPage.getInstance,
     "main": MainPage.getInstance,
+    "cartcheckoutform": GenericFormPage.getInstance,
   };
 
   static dynamic getPageInstance(String classname, Map<String, dynamic> param) {

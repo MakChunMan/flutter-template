@@ -5,7 +5,7 @@ import '../page/pageFactory.dart';
 
 class AppBarComponent {
   static AppBar getAppBar(BuildContext context, String title, List<dynamic> menuItems) {
-    PopupMenuButton popupMenuButton = null;
+    PopupMenuButton popupMenuButton;
     List<Widget> topButtonList = [];
     ;
 

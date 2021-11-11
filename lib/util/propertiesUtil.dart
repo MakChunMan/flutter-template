@@ -2,6 +2,7 @@ import "../restservice/propertiesRestService.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 import "dbUtil.dart";
 import "stringUtil.dart";
+import "wppage_menu_model.dart";
 
 class PropertiesUtil {
   static Map initParamMap = {
@@ -16,6 +17,7 @@ class PropertiesUtil {
 
   static Map propertiesMap = new Map();
   static Map strMap = new Map();
+  static Rendered APP_MENU_PAGE = null;
 
   static final PropertiesRestService restService = PropertiesRestService();
 
@@ -59,6 +61,23 @@ class PropertiesUtil {
     DBUtil.prefs.setString("lang", lang);
   }
 
+  static List<MenuItem> getMenuItems() {
+    if (APP_MENU_PAGE == null)
+      return [];
+    else
+      return APP_MENU_PAGE.menuitems;
+  }
+
+  static List<MenuItem> getPageItems() {
+    if (APP_MENU_PAGE == null)
+      return [];
+    else
+      return APP_MENU_PAGE.otherPages;
+  }
+
+  /************************
+      Loading Functions
+   *************************/
   static Future<String> loadStrMap() async {
     Map strPageIdMap = Map.of(propertiesMap);
     print("original " + strPageIdMap.length.toString());
@@ -101,7 +120,8 @@ class PropertiesUtil {
 
     //Load STR into map
     await loadStrMap();
-
+    //Load Menu items and page items; >>> APP_MENU_PAGE
+    await loadMenuAndPages();
     return Future.value("Done");
     /**
     propertiesMapFromWP.then((m) {
@@ -116,6 +136,12 @@ class PropertiesUtil {
     aMap.addAll(propertiesMapFromWP);
     return propertiesMapFromWP;
      */
+  }
+
+  static Future<String> loadMenuAndPages() async {
+    Rendered a = await restService.getMenuFromWPpage();
+    APP_MENU_PAGE = a;
+    return Future.value("Done");
   }
 
   static final String appId = "app-id";

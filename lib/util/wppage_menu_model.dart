@@ -23,13 +23,15 @@ class WP_Page_menu {
 class Rendered {
   final String app_id;
   final List<MenuItem> menuitems;
+  final List<MenuItem> otherPages;
   Rendered({
     @required this.app_id,
     @required this.menuitems,
+    this.otherPages,
   });
 
   factory Rendered.fromJson(Map<String, dynamic> json) {
-    return Rendered(app_id: json['app_id'] == null ? null : json["app_id"], menuitems: json['menuitems'] == null ? null : List<MenuItem>.from(json['menuitems'].map((x) => MenuItem.fromJson(x))));
+    return Rendered(app_id: json['app_id'] == null ? null : json["app_id"], menuitems: json['menuitems'] == null ? null : List<MenuItem>.from(json['menuitems'].map((x) => MenuItem.fromJson(x))), otherPages: json['otherpages'] == null ? null : List<MenuItem>.from(json['otherpages'].map((x) => MenuItem.fromJson(x))));
   }
 }
 
@@ -38,12 +40,14 @@ class MenuItem {
   final String pageid;
   final int displayorder;
   final String pagecode;
+  final String formid;
 
   MenuItem({
     @required this.name,
     @required this.pageid,
     @required this.displayorder,
     this.pagecode,
+    this.formid,
   });
 
   factory MenuItem.fromJson(Map<String, dynamic> json) {
@@ -52,6 +56,7 @@ class MenuItem {
       pageid: json['page-id'] as String,
       displayorder: json['display-order'] as int,
       pagecode: json['page-code'] as String,
+      formid: json['form-id'] as String,
     );
   }
 }

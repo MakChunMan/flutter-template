@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'util/services.dart';
+import 'util/propertiesUtil.dart';
 import 'restservice/propertiesRestService.dart';
 import 'util/wppage_menu_model.dart';
 import 'component/appbar.dart';
@@ -15,13 +16,13 @@ class TestJsonPageState extends State<TestJsonPage> {
   final HttpService httpService = HttpService();
   final PropertiesRestService restService = PropertiesRestService();
 
-  var renderedJsonStr;
+  List<MenuItem> meunItemList;
 
-  Future<Rendered> getMenu() async {
-    Rendered a = await restService.getMenuFromWPpage();
+  Future<List<MenuItem>> getMenu() async {
+    List<MenuItem> a = PropertiesUtil.getMenuItems();
     setState(() {
-      renderedJsonStr = a.menuitems;
-      print("setState: " + a.menuitems.length.toString());
+      meunItemList = a;
+      print("setState: " + a.length.toString());
     });
     return a;
   }
@@ -35,7 +36,7 @@ class TestJsonPageState extends State<TestJsonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent.getAppBar(context, "Posts Jason", renderedJsonStr),
+      appBar: AppBarComponent.getAppBar(context, "Posts Jason", meunItemList),
       body: const Center(
         child: Text('Hello World'),
       ),

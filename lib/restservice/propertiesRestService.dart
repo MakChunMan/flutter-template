@@ -28,6 +28,7 @@ class PropertiesRestService {
     print("start getMenuFromWPpage: " + PropertiesUtil.getProp("pageid-menu"));
     if (PropertiesUtil.getProp("pageid-menu") == null) {}
     String contentStr = await CommonRestService.getPageString(PropertiesUtil.getProp("pageid-menu"));
+    print("content: " + contentStr);
     return Rendered.fromJson(jsonDecode(contentStr));
   }
 

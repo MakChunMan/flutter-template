@@ -31,7 +31,7 @@ class PropertiesRestService {
     try {
       print("jsonDecode(contentStr):" + jsonDecode(contentStr));
     } catch (e) {
-      print("Exception:" + e.toString());
+      print("Exception:" + e.toString() + "<br/>" + Uri.encodeComponent(contentStr));
     }
     return Rendered.fromJson(jsonDecode(contentStr));
   }

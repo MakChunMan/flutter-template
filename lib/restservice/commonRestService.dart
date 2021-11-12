@@ -19,7 +19,7 @@ class CommonRestService {
     if (res.statusCode == 200) {
       print("Get 200 from pageId:" + pageId);
       Map<String, dynamic> map = jsonDecode(res.body);
-      String aStr = HttpService.removeTabFromWPString(map['content']['rendered']);
+      String aStr = StringUtil.removeHtmlTag(HttpService.removeTabFromWPString(map['content']['rendered']));
       print("===> Content:" + StringUtil.removeHtmlTag(aStr));
 
       GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: StringUtil.removeHtmlTag(map["title"]['rendered']));

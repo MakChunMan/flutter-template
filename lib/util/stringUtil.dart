@@ -4,7 +4,7 @@ class StringUtil {
   }
 
   static String removeHtmlTag(String str) {
-    return str.replaceAll("(?s)<(\\w+)\\b[^<>]*>.*?</\\1>", "");
+    return str.replaceAll("(?s)<(\\w+)\\b[^<>]*>.*?</\\1>", "").replaceAll("<br>", "");
   }
 
   static String trim(String str, int maxlength) {

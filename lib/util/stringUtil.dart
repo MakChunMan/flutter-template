@@ -1,14 +1,13 @@
+import 'package:html/parser.dart';
+
 class StringUtil {
   static bool isNullOrEmpty(String str) {
     return (str == null || str.trim == "");
   }
 
   static String removeHtmlTag(String str) {
-    RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
-
-    return str.replaceAll(exp, '');
-
-    //return str.replaceAll("(?s)<(\\w+)\\b[^<>]*>.*?</\\1>", "").replaceAll("<br>", "");
+    final document = parse(str);
+    return parse(document.body.text).documentElement.text;
   }
 
   static String trim(String str, int maxlength) {

@@ -53,9 +53,7 @@ class PropertiesRestService {
     lines.forEach((s) {
       print("====>$s");
       List<String> aList = [];
-      print("====>1");
       aList = StringUtil.split(s, "=", max: 1);
-      print("====>2");
       if (aList == null) {
         print("List = null");
         return;

@@ -3,9 +3,14 @@ import 'package:http/http.dart';
 import 'post_model.dart';
 import 'wppage_menu_model.dart';
 import 'propertiesUtil.dart';
+import 'stringUtil.dart';
 
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
+
+  static String removeTabAndHtml(String s) {
+    return StringUtil.removeHtmlTag(removeTabFromWPString(s));
+  }
 
   static String removeTabFromWPString(String s) {
     String aStr = s.replaceAll("&#8220;", '"');

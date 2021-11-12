@@ -18,12 +18,10 @@ class CommonRestService {
     print("[CommonRestService] - URL:" + url);
     if (res.statusCode == 200) {
       print("Get 200 from pageId:" + pageId);
-      print(res.body);
       Map<String, dynamic> map = jsonDecode(res.body);
-      String aStr = StringUtil.removeHtmlTag(HttpService.removeTabFromWPString(map['content']['rendered']));
-      print("===> Content:" + StringUtil.removeHtmlTag(aStr));
+      String aStr = HttpService.removeTabAndHtml(map['content']['rendered']);
 
-      GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: StringUtil.removeHtmlTag(map["title"]['rendered']));
+      GenericPageModel aModel = new GenericPageModel(id: pageId, content: aStr, title: HttpService.removeTabAndHtml(map["title"]['rendered']));
 
       return aModel;
     } else {

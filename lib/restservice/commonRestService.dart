@@ -18,6 +18,7 @@ class CommonRestService {
     print("[CommonRestService] - URL:" + url);
     if (res.statusCode == 200) {
       print("Get 200 from pageId:" + pageId);
+      print(res.body);
       Map<String, dynamic> map = jsonDecode(res.body);
       String aStr = StringUtil.removeHtmlTag(HttpService.removeTabFromWPString(map['content']['rendered']));
       print("===> Content:" + StringUtil.removeHtmlTag(aStr));

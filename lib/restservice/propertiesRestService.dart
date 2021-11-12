@@ -29,7 +29,11 @@ class PropertiesRestService {
     if (PropertiesUtil.getProp("pageid-menu") == null) {}
     String contentStr = await CommonRestService.getPageString(PropertiesUtil.getProp("pageid-menu"));
     print("content: " + contentStr);
-    print("jsonDecode(contentStr):" + jsonDecode(contentStr));
+    try {
+      print("jsonDecode(contentStr):" + jsonDecode(contentStr));
+    } catch (e) {
+      print("Exception:" + e.toString());
+    }
     return Rendered.fromJson(jsonDecode(contentStr));
   }
 
